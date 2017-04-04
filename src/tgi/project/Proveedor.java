@@ -27,12 +27,39 @@ public class Proveedor
         contacto = contacto;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
+	public int getId_proveedor() {
+		return id_proveedor;
+	}
+
+	public void setId_proveedor(int id_proveedor) {
+		this.id_proveedor = id_proveedor;
+	}
+
+	public String getNombre_proveedor() {
+		return nombre_proveedor;
+	}
+
+	public void setNombre_proveedor(String nombre_proveedor) {
+		this.nombre_proveedor = nombre_proveedor;
+	}
+
+	public String getUbicacion_proveedor() {
+		return ubicacion_proveedor;
+	}
+
+	public void setUbicacion_proveedor(String ubicacion_proveedor) {
+		this.ubicacion_proveedor = ubicacion_proveedor;
+	}
+
+	public String getContacto() {
+		return contacto;
+	}
+
+	public void setContacto(String contacto) {
+		this.contacto = contacto;
+	}
+
+    
     
 }
 

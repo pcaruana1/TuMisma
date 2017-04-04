@@ -33,12 +33,55 @@ public class PagosPropietaria
         pagado = pagado;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
+	public int getId_pago() {
+		return id_pago;
+	}
+
+	public void setId_pago(int id_pago) {
+		this.id_pago = id_pago;
+	}
+
+	public int getId_propietaria() {
+		return id_propietaria;
+	}
+
+	public void setId_propietaria(int id_propietaria) {
+		this.id_propietaria = id_propietaria;
+	}
+
+	public int getDinero() {
+		return dinero;
+	}
+
+	public void setDinero(int dinero) {
+		this.dinero = dinero;
+	}
+
+	public int getForma_pago() {
+		return forma_pago;
+	}
+
+	public void setForma_pago(int forma_pago) {
+		this.forma_pago = forma_pago;
+	}
+
+	public LocalDate getFecha_pago() {
+		return fecha_pago;
+	}
+
+	public void setFecha_pago(LocalDate fecha_pago) {
+		this.fecha_pago = fecha_pago;
+	}
+
+	public boolean isPagado() {
+		return pagado;
+	}
+
+	public void setPagado(boolean pagado) {
+		this.pagado = pagado;
+	}
+
+    
     
 }
 

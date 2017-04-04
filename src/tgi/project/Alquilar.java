@@ -41,12 +41,79 @@ public class Alquilar
         codigo_descuento = codigo_descuento;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
+	public int getId_alquiler() {
+		return id_alquiler;
+	}
+
+	public void setId_alquiler(int id_alquiler) {
+		this.id_alquiler = id_alquiler;
+	}
+
+	public int getId_pago() {
+		return id_pago;
+	}
+
+	public void setId_pago(int id_pago) {
+		this.id_pago = id_pago;
+	}
+
+	public int getNref_articulo() {
+		return nref_articulo;
+	}
+
+	public void setNref_articulo(int nref_articulo) {
+		this.nref_articulo = nref_articulo;
+	}
+
+	public int getId_dependienta() {
+		return id_dependienta;
+	}
+
+	public void setId_dependienta(int id_dependienta) {
+		this.id_dependienta = id_dependienta;
+	}
+
+	public int getId_clienta_alquiler() {
+		return id_clienta_alquiler;
+	}
+
+	public void setId_clienta_alquiler(int id_clienta_alquiler) {
+		this.id_clienta_alquiler = id_clienta_alquiler;
+	}
+
+	public LocalDate getFecha_recogida() {
+		return fecha_recogida;
+	}
+
+	public void setFecha_recogida(LocalDate fecha_recogida) {
+		this.fecha_recogida = fecha_recogida;
+	}
+
+	public LocalDate getFecha_devolucion() {
+		return fecha_devolucion;
+	}
+
+	public void setFecha_devolucion(LocalDate fecha_devolucion) {
+		this.fecha_devolucion = fecha_devolucion;
+	}
+
+	public int getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(int seguro) {
+		this.seguro = seguro;
+	}
+
+	public String getCodigo_descuento() {
+		return codigo_descuento;
+	}
+
+	public void setCodigo_descuento(String codigo_descuento) {
+		this.codigo_descuento = codigo_descuento;
+	}
+
+   
    
 }
 

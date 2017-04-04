@@ -29,12 +29,39 @@ public class ComprasProveedor
        fecha_compra = fecha_compra;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
+	public int getId_ticket() {
+		return id_ticket;
+	}
+
+	public void setId_ticket(int id_ticket) {
+		this.id_ticket = id_ticket;
+	}
+
+	public int getId_proveedor() {
+		return id_proveedor;
+	}
+
+	public void setId_proveedor(int id_proveedor) {
+		this.id_proveedor = id_proveedor;
+	}
+
+	public int getPrecio_final() {
+		return precio_final;
+	}
+
+	public void setPrecio_final(int precio_final) {
+		this.precio_final = precio_final;
+	}
+
+	public LocalDate getFecha_compra() {
+		return fecha_compra;
+	}
+
+	public void setFecha_compra(LocalDate fecha_compra) {
+		this.fecha_compra = fecha_compra;
+	}
+
+    
     
 }
 

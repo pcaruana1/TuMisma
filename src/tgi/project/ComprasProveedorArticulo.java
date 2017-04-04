@@ -28,12 +28,39 @@ public class ComprasProveedorArticulo
         nref_articulo = nref_articulo;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
+	public int getId_ticket() {
+		return id_ticket;
+	}
+
+	public void setId_ticket(int id_ticket) {
+		this.id_ticket = id_ticket;
+	}
+
+	public int getNref_tienda_proveedor() {
+		return nref_tienda_proveedor;
+	}
+
+	public void setNref_tienda_proveedor(int nref_tienda_proveedor) {
+		this.nref_tienda_proveedor = nref_tienda_proveedor;
+	}
+
+	public int getPrecio_unidad() {
+		return precio_unidad;
+	}
+
+	public void setPrecio_unidad(int precio_unidad) {
+		this.precio_unidad = precio_unidad;
+	}
+
+	public int getNref_articulo() {
+		return nref_articulo;
+	}
+
+	public void setNref_articulo(int nref_articulo) {
+		this.nref_articulo = nref_articulo;
+	}
+
+    
    
 }
 

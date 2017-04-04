@@ -32,12 +32,39 @@ public class Compra
 
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
+	public int getId_compra() {
+		return id_compra;
+	}
+
+	public void setId_compra(int id_compra) {
+		this.id_compra = id_compra;
+	}
+
+	public int getNref_articulo() {
+		return nref_articulo;
+	}
+
+	public void setNref_articulo(int nref_articulo) {
+		this.nref_articulo = nref_articulo;
+	}
+
+	public int getId_dependienta() {
+		return id_dependienta;
+	}
+
+	public void setId_dependienta(int id_dependienta) {
+		this.id_dependienta = id_dependienta;
+	}
+
+	public LocalDate getFecha_venta() {
+		return fecha_venta;
+	}
+
+	public void setFecha_venta(LocalDate fecha_venta) {
+		this.fecha_venta = fecha_venta;
+	}
+
+    
     
 }
 

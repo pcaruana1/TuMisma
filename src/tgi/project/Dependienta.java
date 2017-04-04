@@ -27,5 +27,37 @@ public class Dependienta
         apellidos_dependienta = apellidos_dependienta;
     }
 
+	public int getId_dependienta() {
+		return id_dependienta;
+	}
+
+	public void setId_dependienta(int id_dependienta) {
+		this.id_dependienta = id_dependienta;
+	}
+
+	public String getDNI_dependienta() {
+		return DNI_dependienta;
+	}
+
+	public void setDNI_dependienta(String dNI_dependienta) {
+		DNI_dependienta = dNI_dependienta;
+	}
+
+	public String getNombre_dependienta() {
+		return nombre_dependienta;
+	}
+
+	public void setNombre_dependienta(String nombre_dependienta) {
+		this.nombre_dependienta = nombre_dependienta;
+	}
+
+	public String getApellidos_dependienta() {
+		return apellidos_dependienta;
+	}
+
+	public void setApellidos_dependienta(String apellidos_dependienta) {
+		this.apellidos_dependienta = apellidos_dependienta;
+	}
+
 }
 
