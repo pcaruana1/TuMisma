@@ -1,17 +1,10 @@
 package tgi.project;
 
-public class Compra {
+import java.util.ArrayList;
 
-}
-/**
- * Write a description of class Compra here.
- * 
- * @author Patricia Caruana
- * @version 04/04/2017
- */
 import java.time.LocalDate; 
 
-public class Compra
+public class ComprasArticulo
 {
     // instance variables - replace the example below with your own
     private int id_compra;
@@ -21,7 +14,7 @@ public class Compra
     /**
      * Constructor for objects of class Compra
      */
-    public Compra(int id_compra, int nref_articulo, LocalDate fecha_venta)
+    public ComprasArticulo(int id_compra, int nref_articulo, LocalDate fecha_venta)
     {
         // initialise instance variables
        id_compra=id_compra;

@@ -26,7 +26,7 @@ public class PagosPropietaria
     
 
 	public PagosPropietaria(int id_pago, int id_propietaria, int dinero,
-			int forma_pago, tgi.project.LocalDate fecha_pago, boolean pagado) {
+			int forma_pago, LocalDate fecha_pago, boolean pagado) {
 		this.id_pago = id_pago;
 		this.id_propietaria = id_propietaria;
 		this.dinero = dinero;
@@ -37,7 +37,7 @@ public class PagosPropietaria
 
 	
 	public PagosPropietaria(int id_pago, int id_propietaria, int dinero,
-			int forma_pago, tgi.project.LocalDate fecha_pago, boolean pagado,
+			int forma_pago, LocalDate fecha_pago, boolean pagado,
 			ArrayList<Alquilar> lista_alquileres) {
 		super();
 		this.id_pago = id_pago;

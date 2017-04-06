@@ -33,7 +33,7 @@ public class ComprasProveedor
     }
     
 	public ComprasProveedor(int id_ticket, int id_proveedor, int precio_final,
-			tgi.project.LocalDate fecha_compra,
+			LocalDate fecha_compra,
 			ArrayList<Articulo> lista_art_comprados, Proveedor proveedor) {
 		super();
 		this.id_ticket = id_ticket;

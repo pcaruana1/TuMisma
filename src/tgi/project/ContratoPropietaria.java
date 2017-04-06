@@ -22,8 +22,8 @@ public class ContratoPropietaria
      * Constructor for objects of class Contrato
      */   
 	public ContratoPropietaria(int ncontrato_propietaria, int id_propietaria,
-			tgi.project.LocalDate fecha_de_contrato,
-			tgi.project.LocalDate fecha_fin_de_contrato,
+			LocalDate fecha_de_contrato,
+			LocalDate fecha_fin_de_contrato,
 			String nrenovaciones_contrato, Propietaria propietaria) {
 		super();
 		this.ncontrato_propietaria = ncontrato_propietaria;
@@ -36,8 +36,8 @@ public class ContratoPropietaria
 	
 		
 	public ContratoPropietaria(int ncontrato_propietaria, int id_propietaria,
-			tgi.project.LocalDate fecha_de_contrato,
-			tgi.project.LocalDate fecha_fin_de_contrato,
+			LocalDate fecha_de_contrato,
+			LocalDate fecha_fin_de_contrato,
 			String nrenovaciones_contrato, Propietaria propietaria,
 			ArrayList<Articulo> lista_articulos) {
 		this.ncontrato_propietaria = ncontrato_propietaria;

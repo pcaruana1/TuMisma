@@ -8,6 +8,7 @@ package tgi.project;
  * @version 04/04/2017
  */
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Alquilar
 {
@@ -48,14 +49,7 @@ public class Alquilar
 		this.id_alquiler = id_alquiler;
 	}
 
-	public int getId_pago() {
-		return id_pago;
-	}
-
-	public void setId_pago(int id_pago) {
-		this.id_pago = id_pago;
-	}
-
+	
 	public int getNref_articulo() {
 		return nref_articulo;
 	}
@@ -64,22 +58,7 @@ public class Alquilar
 		this.nref_articulo = nref_articulo;
 	}
 
-	public int getId_dependienta() {
-		return id_dependienta;
-	}
-
-	public void setId_dependienta(int id_dependienta) {
-		this.id_dependienta = id_dependienta;
-	}
-
-	public int getId_clienta_alquiler() {
-		return id_clienta_alquiler;
-	}
-
-	public void setId_clienta_alquiler(int id_clienta_alquiler) {
-		this.id_clienta_alquiler = id_clienta_alquiler;
-	}
-
+	
 	public LocalDate getFecha_recogida() {
 		return fecha_recogida;
 	}
