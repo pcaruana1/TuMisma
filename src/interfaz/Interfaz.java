@@ -20,7 +20,7 @@ public class Interfaz {
 //		String email_propietaria,
 //		LocalDate fecha_de_nacimiento_propietaria,
 //		String ncuenta_propietaria)
-		Propietaria prop1 = new Propietaria (1,"09227824R", "Ana", "Perez", "Calle Luz 8",603784587, "luz@gmail.com", new Date(1993,05,09), "999");
+//		Propietaria prop1 = new Propietaria (1,"09227824R", "Ana", "Perez", "Calle Luz 8",603784587, "luz@gmail.com", new Date(1993,05,09), "999");
 
 
 	}
