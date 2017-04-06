@@ -45,24 +45,24 @@ public class Propietaria
 		this.ncuenta_propietaria = ncuenta_propietaria;
 	}
 	
-	public Propietaria(int id_propietaria, String dNI_propietaria,
-			String nombre_propietaria, String apellidos_propietaria,
-			String domicilio_propietaria, int telefono_propietaria,
-			String email_propietaria,
-			LocalDate fecha_de_nacimiento_propietaria,
-			String ncuenta_propietaria,
-			ArrayList<ContratoPropietaria> lista_contratos) {
-		this.id_propietaria = id_propietaria;
-		this.DNI_propietaria = dNI_propietaria;
-		this.nombre_propietaria = nombre_propietaria;
-		this.apellidos_propietaria = apellidos_propietaria;
-		this.domicilio_propietaria = domicilio_propietaria;
-		this.telefono_propietaria = telefono_propietaria;
-		this.email_propietaria = email_propietaria;
-		this.fecha_de_nacimiento_propietaria = fecha_de_nacimiento_propietaria;
-		this.ncuenta_propietaria = ncuenta_propietaria;
-		this.lista_contratos = lista_contratos;
-	}
+//	public Propietaria(int id_propietaria, String dNI_propietaria,
+//			String nombre_propietaria, String apellidos_propietaria,
+//			String domicilio_propietaria, int telefono_propietaria,
+//			String email_propietaria,
+//			LocalDate fecha_de_nacimiento_propietaria,
+//			String ncuenta_propietaria,
+//			ArrayList<ContratoPropietaria> lista_contratos) {
+//		this.id_propietaria = id_propietaria;
+//		this.DNI_propietaria = dNI_propietaria;
+//		this.nombre_propietaria = nombre_propietaria;
+//		this.apellidos_propietaria = apellidos_propietaria;
+//		this.domicilio_propietaria = domicilio_propietaria;
+//		this.telefono_propietaria = telefono_propietaria;
+//		this.email_propietaria = email_propietaria;
+//		this.fecha_de_nacimiento_propietaria = fecha_de_nacimiento_propietaria;
+//		this.ncuenta_propietaria = ncuenta_propietaria;
+//		this.lista_contratos = lista_contratos;
+//	}
 
 	public int getId_propietaria() {
 		return id_propietaria;

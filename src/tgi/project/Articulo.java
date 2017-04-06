@@ -3,7 +3,7 @@ package tgi.project;
 import java.util.ArrayList;
 
 /**
- * Esta clase representa los art�culos del inventario de la tienda
+ * Esta clase representa los articulos del inventario de la tienda
  * 
  * @author Patricia Caruana 
  * @version 03/09/2017
