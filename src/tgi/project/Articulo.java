@@ -20,41 +20,72 @@ public class Articulo
     private int precioVenta;
     private String imagen;
     private String comentarios;
+    private ContratoPropietaria contrato;
+    private ComprasProveedor compra_proveedor;
 
     /**
-     * Constructor for objects of class Artículo
+     * Constructor general de Artículo
      */
+    
     public Articulo(String nref_articulo, String diseñador, String tipo_articulo, 
     boolean disponibilidad, int talla, String color, int fianza, int precioAlquiler,
     int precioVenta, String imagen, String comentarios)
     {
-      nref_articulo = nref_articulo;
-      diseñador = diseñador;
-      tipo_articulo = tipo_articulo;
-      disponibilidad = disponibilidad;
-      talla = talla;
-      color = color;
-      fianza = fianza;
-      precioAlquiler = precioAlquiler;
-      precioVenta = precioVenta;
-      imagen = imagen;
-      comentarios = comentarios;
+      this.nref_articulo = nref_articulo;
+      this.diseñador = diseñador;
+      this.tipo_articulo = tipo_articulo;
+      this.disponibilidad = disponibilidad;
+      this.talla = talla;
+      this.color = color;
+      this.fianza = fianza;
+      this.precioAlquiler = precioAlquiler;
+      this.precioVenta = precioVenta;
+      this.imagen = imagen;
+      this.comentarios = comentarios;
     }
-     public Articulo(String nref_articulo)
-   {
-        nref_articulo = nref_articulo;
-        diseñador = null;
-        tipo_articulo = null;
-        disponibilidad = false;
-        talla = 0 ;
-        color = null;
-        fianza = 0;
-        precioAlquiler = 0;
-        precioVenta = 0;
-        imagen = null;
-        comentarios = null;
-        
-   }
+    
+    
+    //Constructor de articulo con propietaria
+     public Articulo(String nref_articulo, String diseñador,
+			String tipo_articulo, boolean disponibilidad, int talla,
+			String color, int fianza, int precioAlquiler, int precioVenta,
+			String imagen, String comentarios, ContratoPropietaria contrato) {
+		this.nref_articulo = nref_articulo;
+		this.diseñador = diseñador;
+		this.tipo_articulo = tipo_articulo;
+		this.disponibilidad = disponibilidad;
+		this.talla = talla;
+		this.color = color;
+		this.fianza = fianza;
+		this.precioAlquiler = precioAlquiler;
+		this.precioVenta = precioVenta;
+		this.imagen = imagen;
+		this.comentarios = comentarios;
+		this.contrato = contrato;
+	}
+     
+     
+
+     //Constructor de articulo comprado
+	public Articulo(String nref_articulo, String diseñador,
+			String tipo_articulo, boolean disponibilidad, int talla,
+			String color, int fianza, int precioAlquiler, int precioVenta,
+			String imagen, String comentarios, ComprasProveedor compra_proveedor) {
+		this.nref_articulo = nref_articulo;
+		this.diseñador = diseñador;
+		this.tipo_articulo = tipo_articulo;
+		this.disponibilidad = disponibilidad;
+		this.talla = talla;
+		this.color = color;
+		this.fianza = fianza;
+		this.precioAlquiler = precioAlquiler;
+		this.precioVenta = precioVenta;
+		this.imagen = imagen;
+		this.comentarios = comentarios;
+		this.compra_proveedor = compra_proveedor;
+	}
+
+
 	public String getNref_articulo() {
 		return nref_articulo;
 	}
