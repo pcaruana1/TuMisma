@@ -3,7 +3,7 @@ package tgi.project;
 import java.util.ArrayList;
 
 /**
- * Esta clase representa los artículos del inventario de la tienda
+ * Esta clase representa los artï¿½culos del inventario de la tienda
  * 
  * @author Patricia Caruana 
  * @version 03/09/2017
@@ -11,9 +11,8 @@ import java.util.ArrayList;
 
 public class Articulo
 {
-    // instance variables - replace the example below with your own
     private String nref_articulo;
-    private String diseñador;
+    private String designer;
     private String tipo_articulo;
     private boolean disponibilidad;
     private int talla;
@@ -28,15 +27,15 @@ public class Articulo
     private ArrayList<Alquilar> lista_alquileres;
 
     /**
-     * Constructor general de Artículo
+     * Constructor general de Articulo
      */
     
-    public Articulo(String nref_articulo, String diseñador, String tipo_articulo, 
+    public Articulo(String nref_articulo, String designer, String tipo_articulo, 
     boolean disponibilidad, int talla, String color, int fianza, int precioAlquiler,
     int precioVenta, String imagen, String comentarios)
     {
       this.nref_articulo = nref_articulo;
-      this.diseñador = diseñador;
+      this.designer = designer;
       this.tipo_articulo = tipo_articulo;
       this.disponibilidad = disponibilidad;
       this.talla = talla;
@@ -50,12 +49,12 @@ public class Articulo
     
     
     //Constructor de articulo con propietaria
-     public Articulo(String nref_articulo, String diseñador,
+     public Articulo(String nref_articulo, String designer,
 			String tipo_articulo, boolean disponibilidad, int talla,
 			String color, int fianza, int precioAlquiler, int precioVenta,
 			String imagen, String comentarios, ContratoPropietaria contrato) {
 		this.nref_articulo = nref_articulo;
-		this.diseñador = diseñador;
+		this.designer = designer;
 		this.tipo_articulo = tipo_articulo;
 		this.disponibilidad = disponibilidad;
 		this.talla = talla;
@@ -71,12 +70,12 @@ public class Articulo
      
 
      //Constructor de articulo comprado
-	public Articulo(String nref_articulo, String diseñador,
+	public Articulo(String nref_articulo, String designer,
 			String tipo_articulo, boolean disponibilidad, int talla,
 			String color, int fianza, int precioAlquiler, int precioVenta,
 			String imagen, String comentarios, ComprasProveedor compra_proveedor) {
 		this.nref_articulo = nref_articulo;
-		this.diseñador = diseñador;
+		this.designer = designer;
 		this.tipo_articulo = tipo_articulo;
 		this.disponibilidad = disponibilidad;
 		this.talla = talla;
@@ -96,11 +95,11 @@ public class Articulo
 	public void setNref_articulo(String nref_articulo) {
 		this.nref_articulo = nref_articulo;
 	}
-	public String getDiseñador() {
-		return diseñador;
+	public String getDesigner() {
+		return designer;
 	}
-	public void setDiseñador(String diseñador) {
-		this.diseñador = diseñador;
+	public void setDesigner(String designer) {
+		this.designer = designer;
 	}
 	public String getTipo_articulo() {
 		return tipo_articulo;

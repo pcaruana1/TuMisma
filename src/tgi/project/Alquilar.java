@@ -2,7 +2,7 @@ package tgi.project;
 
 
 /**
- * Alquilar relfeja los datos en relacion con el alquiler de articulos
+ * Alquilar refleja los datos en relacion con el alquiler de articulos
  * 
  * @author Patricia Caruana 
  * @version 04/04/2017
