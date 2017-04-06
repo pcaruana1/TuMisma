@@ -12,7 +12,8 @@ import java.time.LocalDate;
 public class Alquilar
 {
     // instance variables - replace the example below with your own
-    private int id_alquiler;
+    //hola soy maria
+	private int id_alquiler;
     private int id_pago;
     private int nref_articulo;
     private int id_dependienta;
