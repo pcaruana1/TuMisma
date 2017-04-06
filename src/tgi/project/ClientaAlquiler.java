@@ -8,6 +8,7 @@ package tgi.project;
  * @version 03/04/2017
  */
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ClientaAlquiler
 {
@@ -22,27 +23,12 @@ public class ClientaAlquiler
     private LocalDate fecha_de_alta_clienta_alquiler;
     private int descuento_clienta_alquiler;
     private LocalDate fecha_de_nacimiento_clienta_alquiler;
+    private ArrayList<Alquilar> lista_alquileres;
 
     /**
      * Constructor for objects of class ClientaAlquiler
      */
-    ClientaAlquiler(String apellidos_clienta_alquiler, String domicilio_clienta_alquiler, int telefono_clienta_alquiler,
-    String email_clienta_alquiler, LocalDate fecha_de_alta_clienta_alquiler, int descuento_clienta_alquiler,
-    LocalDate fecha_de_nacimiento_clienta_alquiler)
-    {
-        // initialise instance variables
-      id_clienta_alquiler = id_clienta_alquiler;
-      DNI_clienta_alquiler= DNI_clienta_alquiler;
-      nombre_clienta_alquiler= nombre_clienta_alquiler;
-      apellidos_clienta_alquiler= apellidos_clienta_alquiler;
-      domicilio_clienta_alquiler= domicilio_clienta_alquiler;
-      telefono_clienta_alquiler= telefono_clienta_alquiler;
-      email_clienta_alquiler= email_clienta_alquiler;
-      fecha_de_alta_clienta_alquiler= fecha_de_alta_clienta_alquiler;
-      descuento_clienta_alquiler= descuento_clienta_alquiler;
-      fecha_de_nacimiento_clienta_alquiler= fecha_de_nacimiento_clienta_alquiler;
-    }
-
+    
 	public int getId_clienta_alquiler() {
 		return id_clienta_alquiler;
 	}

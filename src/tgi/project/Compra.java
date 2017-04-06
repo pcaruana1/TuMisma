@@ -15,19 +15,16 @@ public class Compra
 {
     // instance variables - replace the example below with your own
     private int id_compra;
-    private int nref_articulo;
-    private int id_dependienta;
+    private ArrayList<Articulo> lista_articulos;
     private LocalDate fecha_venta;
 
     /**
      * Constructor for objects of class Compra
      */
-    public Compra(int id_compra, int nref_articulo, int id_dependienta, LocalDate fecha_venta)
+    public Compra(int id_compra, int nref_articulo, LocalDate fecha_venta)
     {
         // initialise instance variables
        id_compra=id_compra;
-       nref_articulo=nref_articulo;
-       id_dependienta=id_dependienta;
        fecha_venta=fecha_venta;
 
     }
@@ -40,22 +37,7 @@ public class Compra
 		this.id_compra = id_compra;
 	}
 
-	public int getNref_articulo() {
-		return nref_articulo;
-	}
-
-	public void setNref_articulo(int nref_articulo) {
-		this.nref_articulo = nref_articulo;
-	}
-
-	public int getId_dependienta() {
-		return id_dependienta;
-	}
-
-	public void setId_dependienta(int id_dependienta) {
-		this.id_dependienta = id_dependienta;
-	}
-
+	
 	public LocalDate getFecha_venta() {
 		return fecha_venta;
 	}

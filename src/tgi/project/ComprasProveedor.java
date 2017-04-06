@@ -8,6 +8,7 @@ package tgi.project;
  * @version 04/04/2017
  */
 import java.time.LocalDate;
+import java.util.ArrayList;
 public class ComprasProveedor
 {
     // instance variables - replace the example below with your own
@@ -15,7 +16,9 @@ public class ComprasProveedor
     private int id_proveedor;
     private int precio_final;
     private LocalDate fecha_compra;
-
+    private ArrayList<Articulo> lista_art_comprados;
+    private Proveedor proveedor;
+    
     /**
      * Constructor for objects of class ComprasProveedor
      */
@@ -28,6 +31,18 @@ public class ComprasProveedor
        precio_final = precio_final;
        fecha_compra = fecha_compra;
     }
+    
+	public ComprasProveedor(int id_ticket, int id_proveedor, int precio_final,
+			tgi.project.LocalDate fecha_compra,
+			ArrayList<Articulo> lista_art_comprados, Proveedor proveedor) {
+		super();
+		this.id_ticket = id_ticket;
+		this.id_proveedor = id_proveedor;
+		this.precio_final = precio_final;
+		this.fecha_compra = fecha_compra;
+		this.lista_art_comprados = lista_art_comprados;
+		this.proveedor = proveedor;
+	}
 
 	public int getId_ticket() {
 		return id_ticket;

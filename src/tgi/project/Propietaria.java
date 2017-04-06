@@ -1,5 +1,7 @@
 package tgi.project;
 
+import java.util.ArrayList;
+
 /**
  * Write a description of class Propietaria here.
  * 
@@ -18,30 +20,53 @@ public class Propietaria
     private String email_propietaria;
     private LocalDate fecha_de_nacimiento_propietaria;
     private String ncuenta_propietaria;
+    private ArrayList<ContratoPropietaria> lista_contratos;
+    private ArrayList<PagosPropietaria> lista_pagos;
 
     /**
      * Constructor for objects of class Propietaria
      */
-    public Propietaria(int id_propietaria, String DNI_propietaria, String nombre_propietaria,
-    		String apellidos_propietaria, String domicilio_propietaria, int telefono_propietaria,
-    		String email_propietaria, LocalDate fecha_de_nacimiento_propietaria, String ncuenta_propietaria)
-    {
-        // initialise instance variables
-    	id_propietaria= id_propietaria;
-    	DNI_propietaria = DNI_propietaria;
-    	nombre_propietaria = nombre_propietaria;
-    	apellidos_propietaria = apellidos_propietaria;
-    	domicilio_propietaria = domicilio_propietaria;
-    	telefono_propietaria= telefono_propietaria;
-    	email_propietaria = email_propietaria;
-    	fecha_de_nacimiento_propietaria = fecha_de_nacimiento_propietaria;
-    	ncuenta_propietaria = ncuenta_propietaria;
-    }
+   
+	public Propietaria(int id_propietaria, String dNI_propietaria,
+			String nombre_propietaria, String apellidos_propietaria,
+			String domicilio_propietaria, int telefono_propietaria,
+			String email_propietaria,
+			LocalDate fecha_de_nacimiento_propietaria,
+			String ncuenta_propietaria) {
+		this.id_propietaria = id_propietaria;
+		this.DNI_propietaria = dNI_propietaria;
+		this.nombre_propietaria = nombre_propietaria;
+		this.apellidos_propietaria = apellidos_propietaria;
+		this.domicilio_propietaria = domicilio_propietaria;
+		this.telefono_propietaria = telefono_propietaria;
+		this.email_propietaria = email_propietaria;
+		this.fecha_de_nacimiento_propietaria = fecha_de_nacimiento_propietaria;
+		this.ncuenta_propietaria = ncuenta_propietaria;
+	}
+	
+	public Propietaria(int id_propietaria, String dNI_propietaria,
+			String nombre_propietaria, String apellidos_propietaria,
+			String domicilio_propietaria, int telefono_propietaria,
+			String email_propietaria,
+			LocalDate fecha_de_nacimiento_propietaria,
+			String ncuenta_propietaria,
+			ArrayList<ContratoPropietaria> lista_contratos) {
+		this.id_propietaria = id_propietaria;
+		this.DNI_propietaria = dNI_propietaria;
+		this.nombre_propietaria = nombre_propietaria;
+		this.apellidos_propietaria = apellidos_propietaria;
+		this.domicilio_propietaria = domicilio_propietaria;
+		this.telefono_propietaria = telefono_propietaria;
+		this.email_propietaria = email_propietaria;
+		this.fecha_de_nacimiento_propietaria = fecha_de_nacimiento_propietaria;
+		this.ncuenta_propietaria = ncuenta_propietaria;
+		this.lista_contratos = lista_contratos;
+	}
 
 	public int getId_propietaria() {
 		return id_propietaria;
 	}
-
+	
 	public void setId_propietaria(int id_propietaria) {
 		this.id_propietaria = id_propietaria;
 	}

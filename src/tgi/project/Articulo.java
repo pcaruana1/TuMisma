@@ -1,4 +1,7 @@
 package tgi.project;
+
+import java.util.ArrayList;
+
 /**
  * Esta clase representa los artículos del inventario de la tienda
  * 
@@ -22,6 +25,7 @@ public class Articulo
     private String comentarios;
     private ContratoPropietaria contrato;
     private ComprasProveedor compra_proveedor;
+    private ArrayList<Alquilar> lista_alquileres;
 
     /**
      * Constructor general de Artículo
