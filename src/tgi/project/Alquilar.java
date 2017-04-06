@@ -13,6 +13,7 @@ public class Alquilar
 {
     // instance variables - replace the example below with your own
     //hola soy Patty
+	//hola soy maria
 	private int id_alquiler;
     private int id_pago;
     private int nref_articulo;
