@@ -2,6 +2,7 @@ package interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.time.LocalDate;
 import java.time.ZoneId;
 
 import javax.swing.JButton;
@@ -106,6 +107,15 @@ public class InputClienta extends JDialog {
 		JDateChooser bday = new JDateChooser();
 		bday.setBounds(152, 261, 105, 22);
 		contentPanel.add(bday);
+		
+		JLabel lblDescuento = new JLabel("Descuento (%):");
+		lblDescuento.setBounds(12, 222, 113, 24);
+		contentPanel.add(lblDescuento);
+		
+		JTextArea descuento = new JTextArea();
+		descuento.setText("0");
+		descuento.setBounds(108, 224, 98, 22);
+		contentPanel.add(descuento);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -126,8 +136,9 @@ public class InputClienta extends JDialog {
 		java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		
 		ClientaAlquiler clienta = new ClientaAlquiler(dni.toString(), nombre.toString(),
-				apellidos.toString(), direccion.toString(), Integer.parseInt(telefono.getText()),
-				email.toString(), null, 0, date);	
+				apellidos.toString(), direccion.toString(), Integer.parseInt(cp.getText()),
+				Integer.parseInt(telefono.getText()),
+				email.toString(), LocalDate.now(), Integer.parseInt(descuento.getText()), date);	
 	}
 
 }
