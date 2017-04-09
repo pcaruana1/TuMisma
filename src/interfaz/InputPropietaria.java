@@ -7,10 +7,17 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+
+import tgi.project.Propietaria;
+
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
@@ -46,17 +53,17 @@ public class InputPropietaria extends JDialog {
 		lblNombre.setBounds(12, 23, 54, 24);
 		contentPanel.add(lblNombre);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(78, 24, 155, 22);
-		contentPanel.add(textArea);
+		JTextArea nombre = new JTextArea();
+		nombre.setBounds(78, 24, 155, 22);
+		contentPanel.add(nombre);
 		
 		JLabel lblApellidos = new JLabel("Apellidos: ");
 		lblApellidos.setBounds(12, 67, 79, 24);
 		contentPanel.add(lblApellidos);
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setBounds(78, 68, 255, 22);
-		contentPanel.add(textArea_1);
+		JTextArea apellidos = new JTextArea();
+		apellidos.setBounds(78, 68, 255, 22);
+		contentPanel.add(apellidos);
 		
 		JLabel lblDni = new JLabel("DNI: ");
 		lblDni.setBounds(12, 110, 79, 24);
@@ -86,33 +93,33 @@ public class InputPropietaria extends JDialog {
 		lblNcuenta.setBounds(12, 222, 84, 24);
 		contentPanel.add(lblNcuenta);
 		
-		JTextArea textArea_2 = new JTextArea();
-		textArea_2.setBounds(78, 111, 128, 22);
-		contentPanel.add(textArea_2);
+		JTextArea dni = new JTextArea();
+		dni.setBounds(78, 111, 128, 22);
+		contentPanel.add(dni);
 		
-		JTextArea textArea_3 = new JTextArea();
-		textArea_3.setBounds(78, 149, 318, 22);
-		contentPanel.add(textArea_3);
+		JTextArea direccion = new JTextArea();
+		direccion.setBounds(78, 149, 318, 22);
+		contentPanel.add(direccion);
 		
-		JTextArea textArea_4 = new JTextArea();
-		textArea_4.setBounds(108, 186, 98, 22);
-		contentPanel.add(textArea_4);
+		JTextArea cp = new JTextArea();
+		cp.setBounds(108, 186, 98, 22);
+		contentPanel.add(cp);
 		
-		JTextArea textArea_5 = new JTextArea();
-		textArea_5.setBounds(330, 24, 113, 22);
-		contentPanel.add(textArea_5);
+		JTextArea telefono = new JTextArea();
+		telefono.setBounds(330, 24, 113, 22);
+		contentPanel.add(telefono);
 		
-		JTextArea textArea_6 = new JTextArea();
-		textArea_6.setBounds(289, 111, 154, 22);
-		contentPanel.add(textArea_6);
+		JTextArea email = new JTextArea();
+		email.setBounds(289, 111, 154, 22);
+		contentPanel.add(email);
 		
-		JTextArea textArea_8 = new JTextArea();
-		textArea_8.setBounds(108, 223, 261, 22);
-		contentPanel.add(textArea_8);
+		JTextArea ncuenta = new JTextArea();
+		ncuenta.setBounds(108, 223, 261, 22);
+		contentPanel.add(ncuenta);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(152, 261, 105, 22);
-		contentPanel.add(dateChooser);
+		JDateChooser bday = new JDateChooser();
+		bday.setBounds(152, 261, 105, 22);
+		contentPanel.add(bday);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -129,5 +136,10 @@ public class InputPropietaria extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		
+		java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		
+		Propietaria propietaria = new Propietaria( dni.toString(), nombre.toString(), apellidos.toString(),
+				direccion.toString(), Integer.parseInt(telefono.getText()), email.toString(), date, ncuenta.toString());
 	}
 }
