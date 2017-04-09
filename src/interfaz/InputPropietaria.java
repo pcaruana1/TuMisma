@@ -20,6 +20,8 @@ import tgi.project.Propietaria;
 
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InputPropietaria extends JDialog {
 
@@ -126,6 +128,14 @@ public class InputPropietaria extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+						
+						Propietaria propietaria = new Propietaria( dni.toString(), nombre.toString(), apellidos.toString(),
+								direccion.toString(), Integer.parseInt(telefono.getText().trim()), email.toString(), date, ncuenta.toString());
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -137,9 +147,5 @@ public class InputPropietaria extends JDialog {
 			}
 		}
 		
-		java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		
-		Propietaria propietaria = new Propietaria( dni.toString(), nombre.toString(), apellidos.toString(),
-				direccion.toString(), Integer.parseInt(telefono.getText()), email.toString(), date, ncuenta.toString());
 	}
 }

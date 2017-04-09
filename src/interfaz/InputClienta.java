@@ -129,9 +129,9 @@ public class InputClienta extends JDialog {
 						java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 						
 						ClientaAlquiler clienta = new ClientaAlquiler(dni.toString(), nombre.toString(),
-								apellidos.toString(), direccion.toString(), Integer.parseInt(cp.getText()),
-								Integer.parseInt(telefono.getText()),
-								email.toString(), LocalDate.now(), Integer.parseInt(descuento.getText()), date);
+								apellidos.toString(), direccion.toString(), Integer.parseInt(cp.getText().trim()),
+								Integer.parseInt(telefono.getText().trim()),
+								email.toString(), LocalDate.now(), Integer.parseInt(descuento.getText().trim()), date);
 						
 					}
 				}); 

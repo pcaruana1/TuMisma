@@ -52,6 +52,7 @@ public class GUI extends JFrame {
 		JButton btnNuevaPropietaria = new JButton("Nueva Propietaria");
 		btnNuevaPropietaria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				InputPropietaria.main(null);
 			}
 		});
 		btnNuevaPropietaria.setBounds(35, 34, 139, 34);
