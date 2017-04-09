@@ -15,6 +15,8 @@ import javax.swing.border.EmptyBorder;
 import tgi.project.ClientaAlquiler;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InputClienta extends JDialog {
 
@@ -122,6 +124,17 @@ public class InputClienta extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+						
+						ClientaAlquiler clienta = new ClientaAlquiler(dni.toString(), nombre.toString(),
+								apellidos.toString(), direccion.toString(), Integer.parseInt(cp.getText()),
+								Integer.parseInt(telefono.getText()),
+								email.toString(), LocalDate.now(), Integer.parseInt(descuento.getText()), date);
+						
+					}
+				}); 
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -133,12 +146,7 @@ public class InputClienta extends JDialog {
 			}
 		}
 		
-		java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		
-		ClientaAlquiler clienta = new ClientaAlquiler(dni.toString(), nombre.toString(),
-				apellidos.toString(), direccion.toString(), Integer.parseInt(cp.getText()),
-				Integer.parseInt(telefono.getText()),
-				email.toString(), LocalDate.now(), Integer.parseInt(descuento.getText()), date);	
 	}
 
 }

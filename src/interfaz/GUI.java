@@ -3,12 +3,17 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -55,6 +60,7 @@ public class GUI extends JFrame {
 		JButton btnNuevaClienta = new JButton("Nueva Clienta");
 		btnNuevaClienta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				InputClienta.main(null);
 			}
 		});
 		btnNuevaClienta.setBounds(35, 112, 139, 34);
