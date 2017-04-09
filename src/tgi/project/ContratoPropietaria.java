@@ -15,7 +15,7 @@ public class ContratoPropietaria
     private int id_propietaria;
     private LocalDate fecha_de_contrato;
     private LocalDate fecha_fin_de_contrato;
-    private String nrenovaciones_contrato;
+    private int nrenovaciones_contrato;
     private Propietaria propietaria;
     private ArrayList<Articulo> lista_articulos;
     /**
@@ -24,7 +24,7 @@ public class ContratoPropietaria
 	public ContratoPropietaria(int ncontrato_propietaria, int id_propietaria,
 			LocalDate fecha_de_contrato,
 			LocalDate fecha_fin_de_contrato,
-			String nrenovaciones_contrato, Propietaria propietaria) {
+			int nrenovaciones_contrato, Propietaria propietaria) {
 		super();
 		this.ncontrato_propietaria = ncontrato_propietaria;
 		this.id_propietaria = id_propietaria;
@@ -38,7 +38,7 @@ public class ContratoPropietaria
 	public ContratoPropietaria(int ncontrato_propietaria, int id_propietaria,
 			LocalDate fecha_de_contrato,
 			LocalDate fecha_fin_de_contrato,
-			String nrenovaciones_contrato, Propietaria propietaria,
+			int nrenovaciones_contrato, Propietaria propietaria,
 			ArrayList<Articulo> lista_articulos) {
 		this.ncontrato_propietaria = ncontrato_propietaria;
 		this.id_propietaria = id_propietaria;
@@ -82,11 +82,11 @@ public class ContratoPropietaria
 		this.fecha_fin_de_contrato = fecha_fin_de_contrato;
 	}
 
-	public String getNrenovaciones_contrato() {
+	public int getNrenovaciones_contrato() {
 		return nrenovaciones_contrato;
 	}
 
-	public void setNrenovaciones_contrato(String nrenovaciones_contrato) {
+	public void setNrenovaciones_contrato(int nrenovaciones_contrato) {
 		this.nrenovaciones_contrato = nrenovaciones_contrato;
 	}
 
