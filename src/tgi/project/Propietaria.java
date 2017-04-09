@@ -28,13 +28,13 @@ public class Propietaria
      * Constructor for objects of class Propietaria
      */
    
-	public Propietaria(int id_propietaria, String dNI_propietaria,
+	public Propietaria(String dNI_propietaria,
 			String nombre_propietaria, String apellidos_propietaria,
 			String domicilio_propietaria, int telefono_propietaria,
 			String email_propietaria,
 			LocalDate fecha_de_nacimiento_propietaria,
 			String ncuenta_propietaria) {
-		this.id_propietaria = id_propietaria;
+		this.id_propietaria = 0;
 		this.DNI_propietaria = dNI_propietaria;
 		this.nombre_propietaria = nombre_propietaria;
 		this.apellidos_propietaria = apellidos_propietaria;

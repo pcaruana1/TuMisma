@@ -18,6 +18,7 @@ public class ClientaAlquiler
     private String nombre_clienta_alquiler;
     private String apellidos_clienta_alquiler;
     private String domicilio_clienta_alquiler;
+    private int codigopostal_clienta_alquiler;
     private int telefono_clienta_alquiler;
     private String email_clienta_alquiler;
     private LocalDate fecha_de_alta_clienta_alquiler;
@@ -29,8 +30,29 @@ public class ClientaAlquiler
      * Constructor for objects of class ClientaAlquiler
      */
     
+    
 	public int getId_clienta_alquiler() {
 		return id_clienta_alquiler;
+	}
+
+	public ClientaAlquiler(String dNI_clienta_alquiler,
+			String nombre_clienta_alquiler, String apellidos_clienta_alquiler,
+			String domicilio_clienta_alquiler, int codigopostal_clienta_alquiler, int telefono_clienta_alquiler,
+			String email_clienta_alquiler,
+			LocalDate fecha_de_alta_clienta_alquiler,
+			int descuento_clienta_alquiler,
+			LocalDate fecha_de_nacimiento_clienta_alquiler) {
+		super();
+		DNI_clienta_alquiler = dNI_clienta_alquiler;
+		this.nombre_clienta_alquiler = nombre_clienta_alquiler;
+		this.apellidos_clienta_alquiler = apellidos_clienta_alquiler;
+		this.domicilio_clienta_alquiler = domicilio_clienta_alquiler;
+		this.codigopostal_clienta_alquiler = codigopostal_clienta_alquiler;
+		this.telefono_clienta_alquiler = telefono_clienta_alquiler;
+		this.email_clienta_alquiler = email_clienta_alquiler;
+		this.fecha_de_alta_clienta_alquiler = fecha_de_alta_clienta_alquiler;
+		this.descuento_clienta_alquiler = descuento_clienta_alquiler;
+		this.fecha_de_nacimiento_clienta_alquiler = fecha_de_nacimiento_clienta_alquiler;
 	}
 
 	public void setId_clienta_alquiler(int id_clienta_alquiler) {
