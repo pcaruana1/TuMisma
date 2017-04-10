@@ -18,11 +18,11 @@ public class Database {
 			Class.forName("org.sqlite.JDBC");
 			
 			//Ese driver crea una conexion con la base de datos tienda.db
-			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda.db");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda");
 			
 			System.out.println("Database connection opened.");
 			
-			String solicitud = "SELECT * FROM Propietaria";
+			String solicitud = "SELECT * FROM propietaria";
 			Statement statement = c.createStatement();
 			
 						
@@ -136,7 +136,7 @@ public class Database {
 			
 			System.out.println("Database connection opened.");
 			
-			String solicitud = "SELECT * FROM Propietaria WHERE DNI_propietaria=" + dni_propietaria;
+			String solicitud = "SELECT * FROM propietaria WHERE DNI_propietaria=" + dni_propietaria;
 			Statement statement = c.createStatement();
 			
 			
