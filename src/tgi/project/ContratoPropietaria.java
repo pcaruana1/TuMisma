@@ -12,7 +12,6 @@ public class ContratoPropietaria
 {
     // instance variables - replace the example below with your own
     private int ncontrato_propietaria;
-    private int id_propietaria;
     private LocalDate fecha_de_contrato;
     private LocalDate fecha_fin_de_contrato;
     private int nrenovaciones_contrato;
@@ -21,27 +20,22 @@ public class ContratoPropietaria
     /**
      * Constructor for objects of class Contrato
      */   
-	public ContratoPropietaria(int ncontrato_propietaria, int id_propietaria,
-			LocalDate fecha_de_contrato,
-			LocalDate fecha_fin_de_contrato,
-			int nrenovaciones_contrato, Propietaria propietaria) {
+	public ContratoPropietaria(int ncontrato_propietaria,Propietaria propietaria) {
 		super();
 		this.ncontrato_propietaria = ncontrato_propietaria;
-		this.id_propietaria = id_propietaria;
-		this.fecha_de_contrato = fecha_de_contrato;
-		this.fecha_fin_de_contrato = fecha_fin_de_contrato;
-		this.nrenovaciones_contrato = nrenovaciones_contrato;
+		this.fecha_de_contrato = LocalDate.now();
+		this.fecha_fin_de_contrato = fecha_de_contrato.plusMonths(6);
+		this.nrenovaciones_contrato = 0;
 		this.propietaria = propietaria;
 	}
 	
 		
-	public ContratoPropietaria(int ncontrato_propietaria, int id_propietaria,
+	public ContratoPropietaria(int ncontrato_propietaria,
 			LocalDate fecha_de_contrato,
 			LocalDate fecha_fin_de_contrato,
 			int nrenovaciones_contrato, Propietaria propietaria,
 			ArrayList<Articulo> lista_articulos) {
 		this.ncontrato_propietaria = ncontrato_propietaria;
-		this.id_propietaria = id_propietaria;
 		this.fecha_de_contrato = fecha_de_contrato;
 		this.fecha_fin_de_contrato = fecha_fin_de_contrato;
 		this.nrenovaciones_contrato = nrenovaciones_contrato;
@@ -56,14 +50,6 @@ public class ContratoPropietaria
 	}
 	public void setNcontrato_propietaria(int ncontrato_propietaria) {
 		this.ncontrato_propietaria = ncontrato_propietaria;
-	}
-
-	public int getId_propietaria() {
-		return id_propietaria;
-	}
-
-	public void setId_propietaria(int id_propietaria) {
-		this.id_propietaria = id_propietaria;
 	}
 
 	public LocalDate getFecha_de_contrato() {

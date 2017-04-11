@@ -7,7 +7,7 @@ package tgi.project;
  * @author Patricia Caruana 
  * @version 04/04/2017
  */
-public class ComprasProveedorArticulo
+public class CompraArticuloProveedor
 {
     // instance variables - replace the example below with your own
     private int id_ticket;
@@ -18,7 +18,7 @@ public class ComprasProveedorArticulo
     /**
      * Constructor for objects of class ComprasProveedorArticulo
      */
-    public ComprasProveedorArticulo(int id_ticket, int nref_tienda_proveedor, int precio_unidad,
+    public CompraArticuloProveedor(int id_ticket, int nref_tienda_proveedor, int precio_unidad,
     int nref_articulo)
     {
         // initialise instance variables

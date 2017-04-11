@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,10 +37,10 @@ public class Database {
 				String domicilio = rs.getString("domicilio_propietaria");
 				int telefono = rs.getInt("telefono_propietaria");
 				String email = rs.getString("email_propietaria");
-				java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
+				//java.time.LocalDate date = rs.getDate("fecha_de_nacimiento_propietaria");
 				String ncuenta = rs.getString("ncuenta_propietaria");
 				System.out.println("Propietaria: " + id +" "+ dni +" "+ nombre + " " + apellido + "\n"
-						+ domicilio +" "+ telefono +" "+ email +" "+ date.toString() + ncuenta);
+						+ domicilio +" "+ telefono +" "+ email +" "+ /*date.toString() +*/ ncuenta);
 			}
 			rs.close();
 			statement.close();
@@ -55,7 +56,7 @@ public class Database {
 			Class.forName("org.sqlite.JDBC");
 			
 			//Ese driver crea una conexion con la base de datos tienda.db
-			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda.db");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda");
 			
 			System.out.println("Database connection opened.");
 			
@@ -68,12 +69,12 @@ public class Database {
 			while(rs.next()){
 				String ncontrato = rs.getString("ncontrato_propietaria");
 				int id = rs.getInt("id_propietaria");
-				java.sql.Date fecha_contrato = rs.getDate("fecha_de_contrato");
-				java.sql.Date fecha_fin_contrato = rs.getDate("fecha_fin_de_contrato");
+				//java.sql.Date fecha_contrato = rs.getDate("fecha_de_contrato");
+				//java.sql.Date fecha_fin_contrato = rs.getDate("fecha_fin_de_contrato");
 				int n_renovaciones = rs.getInt("nrenovaciones_contrato");
 				System.out.println("Propietaria: " + id +"\nNumero Contrato: "+ ncontrato 
-						+"Validez: "+ fecha_contrato.toString() + " hasta " +
-						fecha_fin_contrato.toString() +" numero de renovaciones "+ n_renovaciones);
+						+"Validez: "+ /*fecha_contrato.toString() +*/ " hasta " +
+						/*fecha_fin_contrato.toString() +*/" numero de renovaciones "+ n_renovaciones);
 			}
 			rs.close();
 			statement.close();
@@ -89,7 +90,7 @@ public class Database {
 			Class.forName("org.sqlite.JDBC");
 			
 			//Ese driver crea una conexion con la base de datos tienda.db
-			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda.db");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda");
 			
 			System.out.println("Database connection opened.");
 			
@@ -124,15 +125,15 @@ public class Database {
 				{System.out.println(e.getMessage());}
 			}
 	
-	public void buscarPropietaria(String dni_propietaria)
+	public static void buscarPropietaria(String dni_propietaria)
 	{
-		/**MOSTRAR POR PANTALLA O DEVOLVER OBJETO¿?¿?*/
+		/**DEVOLVER OBJETO*/
 		try{
 			//Encuentra el driver
 			Class.forName("org.sqlite.JDBC");
 			
 			//Ese driver crea una conexion con la base de datos tienda.db
-			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda.db");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda");
 			
 			System.out.println("Database connection opened.");
 			
@@ -150,10 +151,10 @@ public class Database {
 				String domicilio = rs.getString("domicilio_propietaria");
 				int telefono = rs.getInt("telefono_propietaria");
 				String email = rs.getString("email_propietaria");
-				java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
+				//java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
 				String ncuenta = rs.getString("ncuenta_propietaria");
 				System.out.println("Propietaria: " + id +" "+ dni +" "+ nombre + " " + apellido + "\n"
-						+ domicilio +" "+ telefono +" "+ email +" "+ date.toString() + ncuenta);
+						+ domicilio +" "+ telefono +" "+ email +" "+ /*date.toString() +*/ ncuenta);
 			}
 			rs.close();
 			statement.close();
@@ -165,6 +166,6 @@ public class Database {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		mostrarPropietarias();
+		buscarPropietaria("37812387R");
 	}
 }

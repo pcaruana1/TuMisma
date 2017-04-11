@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import java.time.LocalDate; 
 
-public class ComprasArticulo
+public class CompraClienta
 {
     // instance variables - replace the example below with your own
     private int id_compra;
@@ -14,7 +14,7 @@ public class ComprasArticulo
     /**
      * Constructor for objects of class Compra
      */
-    public ComprasArticulo(int id_compra, int nref_articulo, LocalDate fecha_venta)
+    public CompraClienta(int id_compra, int nref_articulo, LocalDate fecha_venta)
     {
         // initialise instance variables
        id_compra=id_compra;
