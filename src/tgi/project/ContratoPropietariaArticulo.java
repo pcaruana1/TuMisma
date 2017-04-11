@@ -7,10 +7,22 @@ public class ContratoPropietariaArticulo {
 	private int precio_tasacion;
 	private int precio_alquiler;
 
-	public ContratoPropietariaArticulo(int n_contrato) {
+	
+	public ContratoPropietariaArticulo(int n_referencia, int n_contrato,
+			int precio_tasacion, int precio_alquiler) {
 		super();
+		this.n_referencia = n_referencia;
 		this.n_contrato = n_contrato;
+		this.precio_tasacion = precio_tasacion;
+		this.precio_alquiler = precio_alquiler;
 	}
+
+
+	public ContratoPropietariaArticulo(int precio_tasacion) {
+		super();
+		this.precio_tasacion = precio_tasacion;
+	}
+
 
 	public int getN_referencia() {
 		return n_referencia;

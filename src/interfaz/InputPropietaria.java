@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -16,10 +17,12 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 
+import tgi.project.ContratoPropietaria;
 import tgi.project.Propietaria;
 
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -134,6 +137,8 @@ public class InputPropietaria extends JDialog {
 						
 						Propietaria propietaria = new Propietaria( dni.toString(), nombre.toString(), apellidos.toString(),
 								direccion.toString(), Integer.parseInt(telefono.getText().trim()), email.toString(), date, ncuenta.toString());
+						preguntarContrato(propietaria);
+
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -146,6 +151,30 @@ public class InputPropietaria extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		
+	}
+	
+	public void preguntarContrato(Propietaria propietaria)
+	{
+		
+			Object[] options = {"Si",
+	        "No"};
+			int n = JOptionPane.showOptionDialog(this,
+			    "¿Desea crear un contrato para la propietaria?",
+			    "",
+			    JOptionPane.YES_NO_OPTION,
+			    JOptionPane.QUESTION_MESSAGE,
+			    null,     //do not use a custom Icon
+			    options,  //the titles of buttons
+			    options[0]); //default button title
+			
+			if(n==0){
+				
+				//Crea el contrato y lo añade a la lista de contratos de la propietaria			
+				añadirContratoPropietaria(crearContratoPropietaria(propietaria), propietaria);
+				InputArticulo.main(null);
+			}
+			
 		
 	}
 }

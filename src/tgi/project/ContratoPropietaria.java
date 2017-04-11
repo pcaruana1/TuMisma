@@ -16,7 +16,7 @@ public class ContratoPropietaria
     private LocalDate fecha_fin_de_contrato;
     private int nrenovaciones_contrato;
     private Propietaria propietaria;
-    private ArrayList<Articulo> lista_articulos;
+    private ArrayList<ContratoPropietariaArticulo> lista_articulos;
     /**
      * Constructor for objects of class Contrato
      */   
@@ -34,7 +34,7 @@ public class ContratoPropietaria
 			LocalDate fecha_de_contrato,
 			LocalDate fecha_fin_de_contrato,
 			int nrenovaciones_contrato, Propietaria propietaria,
-			ArrayList<Articulo> lista_articulos) {
+			ArrayList<ContratoPropietariaArticulo> lista_articulos) {
 		this.ncontrato_propietaria = ncontrato_propietaria;
 		this.fecha_de_contrato = fecha_de_contrato;
 		this.fecha_fin_de_contrato = fecha_fin_de_contrato;
@@ -44,38 +44,68 @@ public class ContratoPropietaria
 	}
 
 
-
 	public int getNcontrato_propietaria() {
 		return ncontrato_propietaria;
 	}
+
+
 	public void setNcontrato_propietaria(int ncontrato_propietaria) {
 		this.ncontrato_propietaria = ncontrato_propietaria;
 	}
+
 
 	public LocalDate getFecha_de_contrato() {
 		return fecha_de_contrato;
 	}
 
+
 	public void setFecha_de_contrato(LocalDate fecha_de_contrato) {
 		this.fecha_de_contrato = fecha_de_contrato;
 	}
+
 
 	public LocalDate getFecha_fin_de_contrato() {
 		return fecha_fin_de_contrato;
 	}
 
+
 	public void setFecha_fin_de_contrato(LocalDate fecha_fin_de_contrato) {
 		this.fecha_fin_de_contrato = fecha_fin_de_contrato;
 	}
+
 
 	public int getNrenovaciones_contrato() {
 		return nrenovaciones_contrato;
 	}
 
+
 	public void setNrenovaciones_contrato(int nrenovaciones_contrato) {
 		this.nrenovaciones_contrato = nrenovaciones_contrato;
 	}
 
-    
-    
+
+	public Propietaria getPropietaria() {
+		return propietaria;
+	}
+
+
+	public void setPropietaria(Propietaria propietaria) {
+		this.propietaria = propietaria;
+	}
+
+
+	public ArrayList<ContratoPropietariaArticulo> getLista_articulos() {
+		return lista_articulos;
+	}
+
+
+	public void setLista_articulos(
+			ArrayList<ContratoPropietariaArticulo> lista_articulos) {
+		this.lista_articulos = lista_articulos;
+	}
+
+	
+	
 }
+
+	

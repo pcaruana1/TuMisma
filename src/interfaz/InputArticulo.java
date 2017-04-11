@@ -5,12 +5,18 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import tgi.project.Articulo;
+import tgi.project.ContratoPropietaria;
+import tgi.project.ContratoPropietariaArticulo;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InputArticulo extends JDialog {
 
@@ -126,6 +132,15 @@ public class InputArticulo extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						Articulo articulo = new Articulo(null, marca.toString(), tipo.toString(),
+								true, Integer.parseInt(talla.getText()), color.toString(),
+								Integer.parseInt(fianza.getText()), Integer.parseInt(precioAlquiler.getText()),
+								Integer.parseInt(precioVenta.getText()), imagen.toString(), comentarios.toString());
+						masArticulos(articulo);
+				}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -137,10 +152,44 @@ public class InputArticulo extends JDialog {
 			}
 		}
 		
-		Articulo articulo = new Articulo(null, marca.toString(), tipo.toString(),
-				true, Integer.parseInt(talla.getText()), color.toString(),
-				Integer.parseInt(fianza.getText()), Integer.parseInt(precioAlquiler.getText()),
-				Integer.parseInt(precioVenta.getText()), imagen.toString(), comentarios.toString());
 		
 	}
+	
+	@SuppressWarnings("static-access")
+	public void precioTasacion(Articulo articulo){
+		Object[] options = {"Si", "No"};
+		int n = JOptionPane.showOptionDialog(this,
+		    "Introduzca el precio de tasacion",
+		    "",
+		    JOptionPane.YES_NO_OPTION,
+		    JOptionPane.QUESTION_MESSAGE,
+		    null,     //do not use a custom Icon
+		    options,  //the titles of buttons
+		    options[0]); //default button title
+		
+		
+			
+		}
+	
+	public void masArticulos(Articulo articulo){
+		Object[] options = {"Si", "No"};
+		int n = JOptionPane.showOptionDialog(this,
+		    "¿Desea añadir más articulos al contrato?",
+		    "",
+		    JOptionPane.YES_NO_OPTION,
+		    JOptionPane.QUESTION_MESSAGE,
+		    null,     //do not use a custom Icon
+		    options,  //the titles of buttons
+		    options[0]); //default button title
+		
+		
+		if(n==0){
+			
+			this.main(null);
+		}
+		else{
+			
+		}
+	}
+	
 }
