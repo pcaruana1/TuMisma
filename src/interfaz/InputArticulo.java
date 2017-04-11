@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -138,7 +139,8 @@ public class InputArticulo extends JDialog {
 								true, Integer.parseInt(talla.getText()), color.toString(),
 								Integer.parseInt(fianza.getText()), Integer.parseInt(precioAlquiler.getText()),
 								Integer.parseInt(precioVenta.getText()), imagen.toString(), comentarios.toString());
-						masArticulos(articulo);
+						precioTasacion(articulo);
+						masArticulos();
 				}
 				});
 				okButton.setActionCommand("OK");
@@ -155,23 +157,18 @@ public class InputArticulo extends JDialog {
 		
 	}
 	
-	@SuppressWarnings("static-access")
-	public void precioTasacion(Articulo articulo){
-		Object[] options = {"Si", "No"};
-		int n = JOptionPane.showOptionDialog(this,
-		    "Introduzca el precio de tasacion",
-		    "",
-		    JOptionPane.YES_NO_OPTION,
-		    JOptionPane.QUESTION_MESSAGE,
-		    null,     //do not use a custom Icon
-		    options,  //the titles of buttons
-		    options[0]); //default button title
-		
-		
-			
+	
+	public ContratoPropietariaArticulo precioTasacion(Articulo articulo){
+		// a jframe here isn't strictly necessary, but it makes the example a little more real
+	    JFrame frame = new JFrame("Precio Tasacion");
+
+	    // prompt the user to enter their name
+	    String precio = JOptionPane.showInputDialog(frame, "Introduzca el precio de tasacion:");
+	    return Metodos.crearContratoArticulo(articulo, Integer.parseInt(precio));
 		}
 	
-	public void masArticulos(Articulo articulo){
+	@SuppressWarnings("static-access")
+	public void masArticulos(){
 		Object[] options = {"Si", "No"};
 		int n = JOptionPane.showOptionDialog(this,
 		    "¿Desea añadir más articulos al contrato?",

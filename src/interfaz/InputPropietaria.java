@@ -171,9 +171,14 @@ public class InputPropietaria extends JDialog {
 			if(n==0){
 				
 				//Crea el contrato y lo añade a la lista de contratos de la propietaria			
-				añadirContratoPropietaria(crearContratoPropietaria(propietaria), propietaria);
+				Metodos.updatePropietaria(Metodos.crearContratoPropietaria(propietaria), propietaria);
+				this.setVisible(false);
 				InputArticulo.main(null);
 			}
+			
+			/*else{
+				//AÑADIR PROPIETARIA A LA BD
+			}*/
 			
 		
 	}

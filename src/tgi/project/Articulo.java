@@ -22,7 +22,7 @@ public class Articulo
     private int precioVenta;
     private String imagen;
     private String comentarios;
-    private ContratoPropietaria contrato;
+    private ContratoPropietariaArticulo contrato;
     private ComprasProveedor compra_proveedor;
     private ArrayList<Alquilar> lista_alquileres;
 
@@ -48,26 +48,7 @@ public class Articulo
     }
     
     
-    //Constructor de articulo con propietaria
-     public Articulo(String nref_articulo, String designer,
-			String tipo_articulo, boolean disponibilidad, int talla,
-			String color, int fianza, int precioAlquiler, int precioVenta,
-			String imagen, String comentarios, ContratoPropietaria contrato) {
-		this.nref_articulo = nref_articulo;
-		this.designer = designer;
-		this.tipo_articulo = tipo_articulo;
-		this.disponibilidad = disponibilidad;
-		this.talla = talla;
-		this.color = color;
-		this.fianza = fianza;
-		this.precioAlquiler = precioAlquiler;
-		this.precioVenta = precioVenta;
-		this.imagen = imagen;
-		this.comentarios = comentarios;
-		this.contrato = contrato;
-	}
-     
-     
+      
 
      //Constructor de articulo comprado
 	public Articulo(String nref_articulo, String designer,

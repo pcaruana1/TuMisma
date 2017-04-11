@@ -22,28 +22,12 @@ public class GUI extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public GUI() {
 		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 490, 345);
+		setBounds(100, 100, 611, 297);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,21 +42,44 @@ public class GUI extends JFrame {
 		btnNuevaPropietaria.setBounds(35, 34, 139, 34);
 		contentPane.add(btnNuevaPropietaria);
 		
-		JButton btnNuevaClienta = new JButton("Nueva Clienta");
-		btnNuevaClienta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				InputClienta.main(null);
-			}
-		});
-		btnNuevaClienta.setBounds(35, 112, 139, 34);
-		contentPane.add(btnNuevaClienta);
-		
 		JButton btnNewButton = new JButton("Ver Propietarias");
-		btnNewButton.setBounds(194, 34, 139, 34);
+		btnNewButton.setBounds(214, 34, 139, 34);
 		contentPane.add(btnNewButton);
 		
-		JButton btnVerClientas = new JButton("Ver Clientas");
-		btnVerClientas.setBounds(194, 112, 139, 34);
-		contentPane.add(btnVerClientas);
+		JButton btnBuscarPropietaria = new JButton("Buscar Propietaria");
+		btnBuscarPropietaria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnBuscarPropietaria.setBounds(392, 34, 155, 34);
+		contentPane.add(btnBuscarPropietaria);
+		
+		JButton btnVerArticulos = new JButton("Ver Articulos");
+		btnVerArticulos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnVerArticulos.setBounds(214, 99, 139, 34);
+		contentPane.add(btnVerArticulos);
+		
+		JButton btnBuscarArticulo = new JButton("Buscar Articulo");
+		btnBuscarArticulo.setBounds(392, 99, 166, 34);
+		contentPane.add(btnBuscarArticulo);
+		
+		JButton btnNuevoArticulo = new JButton("Nuevo Articulo");
+		btnNuevoArticulo.setBounds(35, 99, 139, 34);
+		contentPane.add(btnNuevoArticulo);
+		
+		JButton btnNuevaProveedor = new JButton("Nueva Proveedor");
+		btnNuevaProveedor.setBounds(35, 167, 139, 34);
+		contentPane.add(btnNuevaProveedor);
+		
+		JButton btnVerProveedores = new JButton("Ver Proveedores");
+		btnVerProveedores.setBounds(214, 167, 139, 34);
+		contentPane.add(btnVerProveedores);
+		
+		JButton btnBuscarProveedores = new JButton("Buscar Proveedores");
+		btnBuscarProveedores.setBounds(392, 167, 166, 34);
+		contentPane.add(btnBuscarProveedores);
 	}
 }
