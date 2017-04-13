@@ -17,7 +17,47 @@ import tgi.project.ContratoPropietariaArticulo;
 import tgi.project.Propietaria;
 
 public class Metodos {
+	
+	//Nueva propietaria
+	public static void nuevaPropietaria()
+	{
+		InputPropietaria dialog = new InputPropietaria();
+		dialog.modificar=true;
+		dialog.setVisible(true);
+		Propietaria propietaria = new Propietaria( dialog.dni.toString(), dialog.nombre.toString(),
+			dialog.apellidos.toString(), dialog.direccion.toString(), Integer.parseInt(dialog.cp.getText().trim()),
+			Integer.parseInt(dialog.telefono.getText().trim()), dialog.email.toString(), null,/*date,*/ dialog.ncuenta.toString());
 
+		//INSERTAR PROPIETARIA A LA BD
+		dialog.setVisible(false);
+		dialog = null;
+		
+		preguntarContrato(propietaria);
+	}
+	
+	public static void preguntarContrato(Propietaria propietaria)
+	{
+		String[] buttons = {"Si", "No"};
+
+	    int respuesta = JOptionPane.showOptionDialog(null,  "¿Desea crear un contrato para la propietaria?", 
+	    		"Datos propietaria",
+	        JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[2]);
+
+	   	
+			if(respuesta==0){
+				
+				//Crea el contrato y lo añade a la lista de contratos de la propietaria			
+				Metodos.updatePropietaria(Metodos.crearContratoPropietaria(propietaria), propietaria);				
+				InputArticulo.main(null);
+			}
+			
+			/*else{
+				//AÑADIR PROPIETARIA A LA BD
+			}*/
+			
+		
+	}
+	
 	//Crea un contrato con los datos de la propietaria
 	public static ContratoPropietaria crearContratoPropietaria(Propietaria propietaria)
 	{
@@ -44,18 +84,22 @@ public class Metodos {
 		c.getLista_articulos().add(c_articulo);
 	}
 	
-	//Buscar propietaria por email
+	//Mostrar datos propietaria
 	public static void mostrarPropietaria(Propietaria propietaria)
 	{
 		InputPropietaria m = new InputPropietaria();
 		m.nombre.setText(propietaria.getNombre_propietaria());
 		m.apellidos.setText(propietaria.getApellidos_propietaria());
 		m.dni.setText(propietaria.getDNI_propietaria());
+        m.telefono.setText(Integer.toString(propietaria.getTelefono_propietaria()));
 		m.direccion.setText(propietaria.getDomicilio_propietaria());
+        m.cp.setText(Integer.toString(propietaria.getCodigopostal_propietaria()));
 		m.email.setText(propietaria.getEmail_propietaria());
 		m.ncuenta.setText(propietaria.getNcuenta_propietaria());
+		m.modificar=true;
 		
-		}
+		m.setVisible(true);		
+	}
 	
 	//Mostrar propietaria
 	
@@ -140,13 +184,11 @@ public class Metodos {
 							ContratoPropietaria contrato = rs.next();
 						    str.append("nº contrato: " + contrato.getNcontrato_propietaria());
 						    str.append(", nº renovaciones: " + contrato.getNrenovaciones_contrato());
-						    str.append(", id propietaria: " + contrato.getPropietaria().getId_propietaria());
-						 
+						    str.append(", id propietaria: " + contrato.getPropietaria().getId_propietaria());		 
 						    						    				    
 					
 						    //new line
-						    str.append("\n");
-						    str.append("\n");
+						    str.append("\n\n");
 						}
 				JOptionPane.showMessageDialog(null,str.toString());
 		}
@@ -162,14 +204,16 @@ public class Metodos {
 		        JOptionPane.WARNING_MESSAGE);	
 		    
 		    List<Propietaria> lista_propietarias =Database.buscarPropietaria(dni);
+		    
 			
 		    if(lista_propietarias.isEmpty()) 
 		    {
-		    	//NO ENCUENTRA
+		    	//No encuentra esa propietaria
+		    	 JOptionPane.showMessageDialog(frame,"No hay ninguna propietaria con DNI " + dni+ "'.");
 		    }
 		    
 		    else{
-		    
+		    List<ContratoPropietaria> lista_contratos = new ArrayList<>();
 			Iterator<Propietaria> rs = lista_propietarias.iterator();
 			
 			Propietaria propietaria = new Propietaria();
@@ -189,9 +233,24 @@ public class Metodos {
 						    str.append(", telefono: " + propietaria.getTelefono_propietaria());
 						    str.append(", email: " + propietaria.getEmail_propietaria());
 						    str.append(", ncuenta: " + propietaria.getNcuenta_propietaria());
+						    lista_contratos=Database.buscarContrato(propietaria);
+						    
+						    if(lista_contratos.isEmpty()){
+						    	str.append("\nNo tiene contratos");
+						    }
+						    
+						    Iterator<ContratoPropietaria> i = lista_contratos.iterator();
+						    ContratoPropietaria contrato = new ContratoPropietaria();
+						    
+						    while(i.hasNext())
+						    {
+						    	contrato = i.next();
+						    	str.append("\nnº contrato : " + contrato.getNcontrato_propietaria());
+						    	str.append("\nnº renovaciones : " +contrato.getNrenovaciones_contrato());
+						    }
 					
 						    //new line
-						    str.append("\n");
+						    str.append("\n\n");
 						}
 				
 				String[] buttons = { "Modificar", "Borrar", "Cancelar" };
@@ -202,17 +261,8 @@ public class Metodos {
 			    if(respuesta == 0 )
 			    {
 			    	//modificar
-			    	InputPropietaria m = new InputPropietaria();
-					m.nombre.setText(propietaria.getNombre_propietaria());
-					m.apellidos.setText(propietaria.getApellidos_propietaria());
-					m.telefono.setText(Integer.toString(propietaria.getTelefono_propietaria()));
-					m.cp.setText(Integer.toString(propietaria.getCodigopostal_propietaria()));
-					m.dni.setText(propietaria.getDNI_propietaria());
-					m.direccion.setText(propietaria.getDomicilio_propietaria());
-					m.email.setText(propietaria.getEmail_propietaria());
-					m.ncuenta.setText(propietaria.getNcuenta_propietaria());
+			    	mostrarPropietaria(propietaria);
 					
-					m.setVisible(true);
 			    }
 			     
 			    if(respuesta == 1)

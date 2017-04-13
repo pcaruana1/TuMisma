@@ -47,6 +47,27 @@ public class Propietaria
 		this.ncuenta_propietaria = ncuenta_propietaria;
 	}
 	
+	
+	
+	public Propietaria(int id_propietaria, String dNI_propietaria,
+			String nombre_propietaria, String apellidos_propietaria,
+			String domicilio_propietaria, int codigopostal_propietaria,
+			int telefono_propietaria, String email_propietaria,
+			String ncuenta_propietaria) {
+		super();
+		this.id_propietaria = id_propietaria;
+		DNI_propietaria = dNI_propietaria;
+		this.nombre_propietaria = nombre_propietaria;
+		this.apellidos_propietaria = apellidos_propietaria;
+		this.domicilio_propietaria = domicilio_propietaria;
+		this.codigopostal_propietaria = codigopostal_propietaria;
+		this.telefono_propietaria = telefono_propietaria;
+		this.email_propietaria = email_propietaria;
+		this.ncuenta_propietaria = ncuenta_propietaria;
+	}
+
+
+
 	public Propietaria(int id_propietaria) {
 		super();
 		this.id_propietaria = id_propietaria;

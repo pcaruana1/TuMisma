@@ -42,6 +42,7 @@ public class InputPropietaria extends JDialog {
 	JTextArea email = new JTextArea();
 	JTextArea ncuenta = new JTextArea();
 	JTextArea bday = new JTextArea();
+	boolean modificar;
 	
 	public static void main(String[] args) {
 		try {
@@ -57,6 +58,7 @@ public class InputPropietaria extends JDialog {
 	 * Create the dialog.
 	 */
 	public InputPropietaria() {
+		modificar=false;
 		setTitle("Datos Propietaria");
 		setBounds(100, 100, 495, 408);
 		getContentPane().setLayout(new BorderLayout());
@@ -136,56 +138,35 @@ public class InputPropietaria extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
+				System.out.println(modificar);
+				if(modificar==true){
+					JButton btnNewButton = new JButton("Guardar");
+					buttonPane.add(btnNewButton);
+					}
+				
+				else{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						//java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 						
-						Propietaria propietaria = new Propietaria( dni.toString(), nombre.toString(), apellidos.toString(),
-								direccion.toString(), Integer.parseInt(cp.getText().trim()), Integer.parseInt(telefono.getText().trim()), email.toString(), null,/*date,*/ ncuenta.toString());
-						preguntarContrato(propietaria);
-
+						Metodos.nuevaPropietaria();						
 					}
 				});
+				
+				
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
-			}
-			{
+				}
+
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
-			}
+			
 		}
 		
+		}
 	}
 	
-	public void preguntarContrato(Propietaria propietaria)
-	{
-		
-			Object[] options = {"Si",
-	        "No"};
-			int n = JOptionPane.showOptionDialog(this,
-			    "¿Desea crear un contrato para la propietaria?",
-			    "",
-			    JOptionPane.YES_NO_OPTION,
-			    JOptionPane.QUESTION_MESSAGE,
-			    null,     //do not use a custom Icon
-			    options,  //the titles of buttons
-			    options[0]); //default button title
-			
-			if(n==0){
-				
-				//Crea el contrato y lo añade a la lista de contratos de la propietaria			
-				Metodos.updatePropietaria(Metodos.crearContratoPropietaria(propietaria), propietaria);
-				this.setVisible(false);
-				InputArticulo.main(null);
-			}
-			
-			/*else{
-				//AÑADIR PROPIETARIA A LA BD
-			}*/
-			
-		
-	}
+	
 }

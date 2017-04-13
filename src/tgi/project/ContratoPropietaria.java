@@ -42,6 +42,11 @@ public class ContratoPropietaria
 	}
 
 
+	public ContratoPropietaria() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public int getNcontrato_propietaria() {
 		return ncontrato_propietaria;
 	}

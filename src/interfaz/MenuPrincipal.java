@@ -18,6 +18,7 @@ import database.Database;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JMenu;
 
 public class MenuPrincipal extends JFrame {
 
@@ -27,6 +28,7 @@ public class MenuPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuPrincipal() {
+		
 		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 611, 297);
@@ -38,10 +40,10 @@ public class MenuPrincipal extends JFrame {
 		JButton btnNuevaPropietaria = new JButton("Nueva Propietaria");
 		btnNuevaPropietaria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InputPropietaria.main(null);
+				Metodos.nuevaPropietaria();
 			}
 		});
-		btnNuevaPropietaria.setBounds(130, 82, 139, 34);
+		btnNuevaPropietaria.setBounds(114, 55, 139, 34);
 		contentPane.add(btnNuevaPropietaria);
 		
 		JButton btnNewButton = new JButton("Ver Propietarias");
@@ -61,7 +63,7 @@ public class MenuPrincipal extends JFrame {
 				Metodos.buscarPropietariasDNI();
 			}
 		});
-		btnBuscarPropietaria.setBounds(342, 82, 155, 34);
+		btnBuscarPropietaria.setBounds(322, 55, 155, 34);
 		contentPane.add(btnBuscarPropietaria);
 		
 		JButton btnVerArticulos = new JButton("Ver Articulos");
@@ -88,7 +90,16 @@ public class MenuPrincipal extends JFrame {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//37812387R
-		Metodos.buscarPropietariasDNI();
+		try {
+			MenuPrincipal dialog = new MenuPrincipal();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) 
+			{
+			e.printStackTrace();
+			}
+		//11539481T
+		//Metodos.mostrarTodasPropietarias();
+		//Metodos.buscarPropietariasDNI();
 	}
 }

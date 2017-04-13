@@ -28,7 +28,7 @@ public class Database {
 			Class.forName("org.sqlite.JDBC");
 			
 			//Ese driver crea una conexion con la base de datos tienda.db
-			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:C:/Users/Patty/Documents/TuMisma/tienda.db");
 			
 			System.out.println("Database connection opened.");
 			
@@ -61,7 +61,7 @@ public class Database {
 				ncuenta = rs.getString("ncuenta_propietaria");
 			
 				
-				Propietaria propietaria = new Propietaria(dni, nombre, apellido, domicilio, cp, telefono, email, null, ncuenta);
+				Propietaria propietaria = new Propietaria(id, dni, nombre, apellido, domicilio, cp, telefono, email, ncuenta);
 				lista_propietarias.add(propietaria);
 				}
 			rs.close();
@@ -82,7 +82,7 @@ public class Database {
 			Class.forName("org.sqlite.JDBC");
 			
 			//Ese driver crea una conexion con la base de datos tienda.db
-			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:C:/Users/Patty/Documents/TuMisma/tienda.db");
 			
 			System.out.println("Database connection opened.");
 			
@@ -101,6 +101,7 @@ public class Database {
 				
 				Propietaria p = new Propietaria(id);
 				ContratoPropietaria contrato = new ContratoPropietaria(ncontrato, p, n_renovaciones);
+				lista_contratos.add(contrato);
 			}
 			rs.close();
 			statement.close();
@@ -119,7 +120,7 @@ public class Database {
 			Class.forName("org.sqlite.JDBC");
 			
 			//Ese driver crea una conexion con la base de datos tienda.db
-			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:C:/Users/Patty/Documents/TuMisma/tienda.db");
 			
 			System.out.println("Database connection opened.");
 			
@@ -155,7 +156,48 @@ public class Database {
 		
 		return lista_articulos;
 			}
+	
+	public static List<ContratoPropietaria> buscarContrato(Propietaria propietaria)
+	{
+		List<ContratoPropietaria> lista_contratos = new ArrayList<>();
 		
+		try{
+			
+			//Encuentra el driver
+			Class.forName("org.sqlite.JDBC");
+			
+			//Ese driver crea una conexion con la base de datos tienda.db
+			Connection c = DriverManager.getConnection("jdbc:sqlite:C:/Users/Patty/Documents/TuMisma/tienda.db");
+			
+			System.out.println("Database connection opened.");
+			
+			String solicitud = "SELECT * FROM contrato_propietaria WHERE id_propietaria="
+			+"'"+propietaria.getId_propietaria()+"'";
+			System.out.println(propietaria.getId_propietaria());
+			Statement statement = c.createStatement();
+			
+						
+			ResultSet rs = statement.executeQuery(solicitud);
+
+			while(rs.next()){
+				int ncontrato = rs.getInt("ncontrato_propietaria");
+				//java.sql.Date fecha_contrato = rs.getDate("fecha_de_contrato");
+				//java.sql.Date fecha_fin_contrato = rs.getDate("fecha_fin_de_contrato");
+				int n_renovaciones = rs.getInt("nrenovaciones_contrato");
+				
+				ContratoPropietaria contrato = new ContratoPropietaria(ncontrato, propietaria, n_renovaciones);
+				lista_contratos.add(contrato);
+				System.out.println(lista_contratos.isEmpty());
+			}
+			rs.close();
+			statement.close();
+			c.close();
+				}catch (Exception e)
+				{System.out.println(e.getMessage());}
+		
+			return lista_contratos;
+	}
+	
 	public static List<Propietaria> buscarPropietaria(String dni_propietaria)
 	{
 		/**ESTA FUNCION DEVUELVE UNA LISTA CON LAS PROPIETARIAS QUE TIENEN ESE DNI*/
@@ -165,7 +207,7 @@ public class Database {
 			Class.forName("org.sqlite.JDBC");
 			
 			//Ese driver crea una conexion con la base de datos tienda.db
-			Connection c = DriverManager.getConnection("jdbc:sqlite:tienda");
+			Connection c = DriverManager.getConnection("jdbc:sqlite:C:/Users/Patty/Documents/TuMisma/tienda.db");
 			
 			System.out.println("Database connection opened.");
 			
@@ -198,7 +240,7 @@ public class Database {
 				ncuenta = rs.getString("ncuenta_propietaria");
 				
 				
-				Propietaria propietaria = new Propietaria(dni, nombre, apellido, domicilio, cp, telefono, email, null, ncuenta);
+				Propietaria propietaria = new Propietaria(id, dni, nombre, apellido, domicilio, cp, telefono, email, ncuenta);
 				lista_propietarias.add(propietaria);
 				}
 			rs.close();
@@ -217,6 +259,9 @@ public class Database {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+//	Propietaria p = new Propietaria(3, "53995653W","m", "m", "m",28222, 2,"m","m" );
+//	List<ContratoPropietaria> rs = buscarContrato(p);
+//	System.out.println(rs.isEmpty());
 		
 	}
 }
