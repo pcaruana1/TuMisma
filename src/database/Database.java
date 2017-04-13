@@ -2,20 +2,27 @@ package database;
 
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
+import tgi.project.Articulo;
+import tgi.project.ContratoPropietaria;
 import tgi.project.Propietaria;
 
 
 public class Database {
 	
-	/** LA CONEXION A LA BASE DE DATOS SE REALIZA 1VEZ AL PRINCIPIO¿?¿?¿?*/
+	/** LA CONEXION A LA BASE DE DATOS SE REALIZA 1VEZ AL PRINCIPIO*/
 
-	public static void mostrarPropietarias()
+	public static List<Propietaria> mostrarPropietarias()
 	{
+		List<Propietaria> lista_propietarias = new ArrayList<>();
 		try{
 			//Encuentra el driver
 			Class.forName("org.sqlite.JDBC");
@@ -30,30 +37,47 @@ public class Database {
 			
 						
 			ResultSet rs = statement.executeQuery(solicitud);
+			int id;
+			String dni;
+			String nombre;
+			String apellido;
+			String domicilio;
+			int cp;
+			int telefono;
+			String email;
+			//java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
+			String ncuenta;
 
 			while(rs.next()){
-				int id = rs.getInt("id_propietaria");
-				String dni = rs.getString("DNI_propietaria");
-				String nombre = rs.getString("nombre_propietaria");
-				String apellido = rs.getString("apellidos_propietaria");
-				String domicilio = rs.getString("domicilio_propietaria");
-				int telefono = rs.getInt("telefono_propietaria");
-				String email = rs.getString("email_propietaria");
-				//java.time.LocalDate date = rs.getDate("fecha_de_nacimiento_propietaria");
-				String ncuenta = rs.getString("ncuenta_propietaria");
-				System.out.println("Propietaria: " + id +" "+ dni +" "+ nombre + " " + apellido + "\n"
-						+ domicilio +" "+ telefono +" "+ email +" "+ /*date.toString() +*/ ncuenta);
-			}
+				id = rs.getInt("id_propietaria");
+				dni = rs.getString("DNI_propietaria");
+				nombre = rs.getString("nombre_propietaria");
+				apellido = rs.getString("apellidos_propietaria");
+				domicilio = rs.getString("domicilio_propietaria");
+				cp = rs.getInt("codigopostal_propietaria");
+				telefono = rs.getInt("telefono_propietaria");
+				email = rs.getString("email_propietaria");
+				//java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
+				ncuenta = rs.getString("ncuenta_propietaria");
+			
+				
+				Propietaria propietaria = new Propietaria(dni, nombre, apellido, domicilio, cp, telefono, email, null, ncuenta);
+				lista_propietarias.add(propietaria);
+				}
 			rs.close();
 			statement.close();
 			c.close();
 				}catch (Exception e)
 				{System.out.println(e.getMessage());}
+		return lista_propietarias;
 			}
 	
-	public static void mostrarContratosPropietarias()
+	public static List<ContratoPropietaria> mostrarContratosPropietarias()
 	{
+		List<ContratoPropietaria> lista_contratos = new ArrayList<>();
+		
 		try{
+			
 			//Encuentra el driver
 			Class.forName("org.sqlite.JDBC");
 			
@@ -69,24 +93,27 @@ public class Database {
 			ResultSet rs = statement.executeQuery(solicitud);
 
 			while(rs.next()){
-				String ncontrato = rs.getString("ncontrato_propietaria");
+				int ncontrato = rs.getInt("ncontrato_propietaria");
 				int id = rs.getInt("id_propietaria");
 				//java.sql.Date fecha_contrato = rs.getDate("fecha_de_contrato");
 				//java.sql.Date fecha_fin_contrato = rs.getDate("fecha_fin_de_contrato");
 				int n_renovaciones = rs.getInt("nrenovaciones_contrato");
-				System.out.println("Propietaria: " + id +"\nNumero Contrato: "+ ncontrato 
-						+"Validez: "+ /*fecha_contrato.toString() +*/ " hasta " +
-						/*fecha_fin_contrato.toString() +*/" numero de renovaciones "+ n_renovaciones);
+				
+				Propietaria p = new Propietaria(id);
+				ContratoPropietaria contrato = new ContratoPropietaria(ncontrato, p, n_renovaciones);
 			}
 			rs.close();
 			statement.close();
 			c.close();
 				}catch (Exception e)
 				{System.out.println(e.getMessage());}
+		
+			return lista_contratos;
 			}
 	
-	public static void mostrarArticulos()
+	public static List<Articulo> mostrarArticulos()
 	{
+		List<Articulo> lista_articulos = new ArrayList<>();
 		try{
 			//Encuentra el driver
 			Class.forName("org.sqlite.JDBC");
@@ -104,32 +131,35 @@ public class Database {
 			ResultSet rs = statement.executeQuery(solicitud);
 
 			while(rs.next()){
-				String designer = rs.getString("designer");
-				int id = rs.getInt("nref_articulo");
+				String designer = rs.getString("marca");
+				String id = rs.getString("nref_articulo");
 				String tipo_articulo = rs.getString("tipo_articulo");
 				Boolean disponibilidad = rs.getBoolean("disponibilidad");
 				int talla = rs.getInt("talla");
 				String color = rs.getString("color");
 				int fianza = rs.getInt("fianza");
 				int precio_alquiler = rs.getInt("precio_alquiler");
+				int precio_venta = rs.getInt("precio_venta");
 				//IMAGEN¿?
 				String comentarios = rs.getString("comentarios");
-				System.out.println("Articulo: " + id +"\nDiseñador: "+ designer 
-						+"Tipo: "+ tipo_articulo + " Disponible: " +
-						disponibilidad +" talla: "+ talla + " color: "+ color
-						+" fianza: " + fianza + " precio alquiler: "+ precio_alquiler+
-						"\nComentarios: " +comentarios);
+				
+				Articulo articulo = new Articulo(id, designer, tipo_articulo, disponibilidad, talla, color, fianza, precio_alquiler, precio_venta, null, comentarios);
+				lista_articulos.add(articulo);
+			
 			}
 			rs.close();
 			statement.close();
 			c.close();
 				}catch (Exception e)
 				{System.out.println(e.getMessage());}
+		
+		return lista_articulos;
 			}
-	
-	public static Propietaria buscarPropietaria(String dni_propietaria)
+		
+	public static List<Propietaria> buscarPropietaria(String dni_propietaria)
 	{
-		/**DEVOLVER OBJETO*/
+		/**ESTA FUNCION DEVUELVE UNA LISTA CON LAS PROPIETARIAS QUE TIENEN ESE DNI*/
+		List<Propietaria> lista_propietarias = new ArrayList<>();
 		try{
 			//Encuentra el driver
 			Class.forName("org.sqlite.JDBC");
@@ -139,7 +169,7 @@ public class Database {
 			
 			System.out.println("Database connection opened.");
 			
-			String solicitud = "SELECT * FROM propietaria WHERE DNI_propietaria=" + dni_propietaria;
+			String solicitud = "SELECT * FROM propietaria WHERE DNI_propietaria=" + "'"+dni_propietaria+"'";
 			Statement statement = c.createStatement();
 			
 			
@@ -149,6 +179,7 @@ public class Database {
 			String nombre;
 			String apellido;
 			String domicilio;
+			int cp;
 			int telefono;
 			String email;
 			//java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
@@ -160,15 +191,15 @@ public class Database {
 				nombre = rs.getString("nombre_propietaria");
 				apellido = rs.getString("apellidos_propietaria");
 				domicilio = rs.getString("domicilio_propietaria");
+				cp = rs.getInt("codigopostal_propietaria");
 				telefono = rs.getInt("telefono_propietaria");
 				email = rs.getString("email_propietaria");
 				//java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
 				ncuenta = rs.getString("ncuenta_propietaria");
-				System.out.println("Propietaria: " + id +" "+ dni +" "+ nombre + " " + apellido + "\n"
-						+ domicilio +" "+ telefono +" "+ email +" "+ /*date.toString() +*/ ncuenta);
 				
-				Propietaria propietaria = new Propietaria(dni, nombre, apellido, domicilio, telefono, email, null, ncuenta);
-				return propietaria;
+				
+				Propietaria propietaria = new Propietaria(dni, nombre, apellido, domicilio, cp, telefono, email, null, ncuenta);
+				lista_propietarias.add(propietaria);
 				}
 			rs.close();
 			statement.close();
@@ -176,12 +207,16 @@ public class Database {
 			
 			}catch (Exception e)
 				{System.out.println(e.getMessage());}
-			return null;
+			return lista_propietarias;
 			}
 	
+	public static void borrarPropietaria(Propietaria propietaria)
+	{
+		
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		buscarPropietaria("37812387R");
+		
 	}
 }

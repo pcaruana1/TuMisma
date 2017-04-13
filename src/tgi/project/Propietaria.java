@@ -17,6 +17,7 @@ public class Propietaria
     private String nombre_propietaria;
     private String apellidos_propietaria;
     private String domicilio_propietaria;
+    private int codigopostal_propietaria ;
     private int telefono_propietaria;
     private String email_propietaria;
     private LocalDate fecha_de_nacimiento_propietaria;
@@ -30,7 +31,7 @@ public class Propietaria
    
 	public Propietaria(String dNI_propietaria,
 			String nombre_propietaria, String apellidos_propietaria,
-			String domicilio_propietaria, int telefono_propietaria,
+			String domicilio_propietaria, int cp, int telefono_propietaria,
 			String email_propietaria,
 			LocalDate fecha_de_nacimiento_propietaria,
 			String ncuenta_propietaria) {
@@ -39,10 +40,20 @@ public class Propietaria
 		this.nombre_propietaria = nombre_propietaria;
 		this.apellidos_propietaria = apellidos_propietaria;
 		this.domicilio_propietaria = domicilio_propietaria;
+		this.codigopostal_propietaria  = cp;
 		this.telefono_propietaria = telefono_propietaria;
 		this.email_propietaria = email_propietaria;
 		this.fecha_de_nacimiento_propietaria = fecha_de_nacimiento_propietaria;
 		this.ncuenta_propietaria = ncuenta_propietaria;
+	}
+	
+	public Propietaria(int id_propietaria) {
+		super();
+		this.id_propietaria = id_propietaria;
+	}
+
+	public Propietaria() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getId_propietaria() {
@@ -83,6 +94,15 @@ public class Propietaria
 
 	public void setDomicilio_propietaria(String domicilio_propietaria) {
 		this.domicilio_propietaria = domicilio_propietaria;
+	}
+
+		
+	public int getCodigopostal_propietaria() {
+		return codigopostal_propietaria ;
+	}
+
+	public void setCodigopostal_propietaria(int cp) {
+		this.codigopostal_propietaria  = cp;
 	}
 
 	public int getTelefono_propietaria() {

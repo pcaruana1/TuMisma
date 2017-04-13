@@ -14,17 +14,19 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 
+import database.Database;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class GUI extends JFrame {
+public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Create the frame.
 	 */
-	public GUI() {
+	public MenuPrincipal() {
 		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 611, 297);
@@ -39,47 +41,54 @@ public class GUI extends JFrame {
 				InputPropietaria.main(null);
 			}
 		});
-		btnNuevaPropietaria.setBounds(35, 34, 139, 34);
+		btnNuevaPropietaria.setBounds(130, 82, 139, 34);
 		contentPane.add(btnNuevaPropietaria);
 		
 		JButton btnNewButton = new JButton("Ver Propietarias");
-		btnNewButton.setBounds(214, 34, 139, 34);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Funcion ver propietarias
+				Metodos.mostrarTodasPropietarias();
+			}
+		});
+		btnNewButton.setBounds(35, 170, 139, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnBuscarPropietaria = new JButton("Buscar Propietaria");
 		btnBuscarPropietaria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//Buscar propietarias
+				Metodos.buscarPropietariasDNI();
 			}
 		});
-		btnBuscarPropietaria.setBounds(392, 34, 155, 34);
+		btnBuscarPropietaria.setBounds(342, 82, 155, 34);
 		contentPane.add(btnBuscarPropietaria);
 		
 		JButton btnVerArticulos = new JButton("Ver Articulos");
 		btnVerArticulos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Funcion ver articulos
+				Metodos.mostrarTodosArticulos();
 			}
 		});
-		btnVerArticulos.setBounds(214, 99, 139, 34);
+		btnVerArticulos.setBounds(408, 170, 139, 34);
 		contentPane.add(btnVerArticulos);
 		
-		JButton btnBuscarArticulo = new JButton("Buscar Articulo");
-		btnBuscarArticulo.setBounds(392, 99, 166, 34);
-		contentPane.add(btnBuscarArticulo);
-		
-		JButton btnNuevoArticulo = new JButton("Nuevo Articulo");
-		btnNuevoArticulo.setBounds(35, 99, 139, 34);
-		contentPane.add(btnNuevoArticulo);
-		
-		JButton btnNuevaProveedor = new JButton("Nueva Proveedor");
-		btnNuevaProveedor.setBounds(35, 167, 139, 34);
-		contentPane.add(btnNuevaProveedor);
-		
-		JButton btnVerProveedores = new JButton("Ver Proveedores");
-		btnVerProveedores.setBounds(214, 167, 139, 34);
-		contentPane.add(btnVerProveedores);
-		
-		JButton btnBuscarProveedores = new JButton("Buscar Proveedores");
-		btnBuscarProveedores.setBounds(392, 167, 166, 34);
-		contentPane.add(btnBuscarProveedores);
+		JButton btnVerContratos = new JButton("Ver Contratos");
+		btnVerContratos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Funcion ver contratos
+				Metodos.mostrarTodosContratosPropietarias();
+			}
+		});
+		btnVerContratos.setBounds(214, 170, 139, 34);
+		contentPane.add(btnVerContratos);
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//37812387R
+		Metodos.buscarPropietariasDNI();
 	}
 }

@@ -142,7 +142,7 @@ public class InputPropietaria extends JDialog {
 						//java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 						
 						Propietaria propietaria = new Propietaria( dni.toString(), nombre.toString(), apellidos.toString(),
-								direccion.toString(), Integer.parseInt(telefono.getText().trim()), email.toString(), null,/*date,*/ ncuenta.toString());
+								direccion.toString(), Integer.parseInt(cp.getText().trim()), Integer.parseInt(telefono.getText().trim()), email.toString(), null,/*date,*/ ncuenta.toString());
 						preguntarContrato(propietaria);
 
 					}

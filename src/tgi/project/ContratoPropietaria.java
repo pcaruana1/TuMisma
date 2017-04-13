@@ -20,12 +20,10 @@ public class ContratoPropietaria
     /**
      * Constructor for objects of class Contrato
      */   
-	public ContratoPropietaria(int ncontrato_propietaria,Propietaria propietaria) {
+	public ContratoPropietaria(int ncontrato_propietaria,Propietaria propietaria, int nrenovaciones) {
 		super();
 		this.ncontrato_propietaria = ncontrato_propietaria;
-		this.fecha_de_contrato = LocalDate.now();
-		this.fecha_fin_de_contrato = fecha_de_contrato.plusMonths(6);
-		this.nrenovaciones_contrato = 0;
+		this.nrenovaciones_contrato = nrenovaciones;
 		this.propietaria = propietaria;
 	}
 	
