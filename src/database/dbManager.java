@@ -44,4 +44,8 @@ public class dbManager {
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
+	} catch (Exception e) {
+		System.out.println(e.getMessage());
+	}
+	}
 }

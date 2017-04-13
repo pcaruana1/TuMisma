@@ -33,6 +33,16 @@ public class InputPropietaria extends JDialog {
 	/**
 	 * Launch the application.
 	 */
+	JTextArea nombre = new JTextArea();
+	JTextArea apellidos = new JTextArea();
+	JTextArea dni = new JTextArea();
+	JTextArea direccion = new JTextArea();
+	JTextArea cp = new JTextArea();
+	JTextArea telefono = new JTextArea();
+	JTextArea email = new JTextArea();
+	JTextArea ncuenta = new JTextArea();
+	JTextArea bday = new JTextArea();
+	
 	public static void main(String[] args) {
 		try {
 			InputPropietaria dialog = new InputPropietaria();
@@ -58,15 +68,15 @@ public class InputPropietaria extends JDialog {
 		lblNombre.setBounds(12, 23, 54, 24);
 		contentPanel.add(lblNombre);
 		
-		JTextArea nombre = new JTextArea();
-		nombre.setBounds(78, 24, 155, 22);
+		
+		this.nombre.setBounds(78, 24, 155, 22);
 		contentPanel.add(nombre);
 		
 		JLabel lblApellidos = new JLabel("Apellidos: ");
 		lblApellidos.setBounds(12, 67, 79, 24);
 		contentPanel.add(lblApellidos);
 		
-		JTextArea apellidos = new JTextArea();
+		
 		apellidos.setBounds(78, 68, 255, 22);
 		contentPanel.add(apellidos);
 		
@@ -74,7 +84,7 @@ public class InputPropietaria extends JDialog {
 		lblDni.setBounds(12, 110, 79, 24);
 		contentPanel.add(lblDni);
 		
-		JLabel lblDireccin = new JLabel("Direcci\u00F3n: ");
+		JLabel lblDireccin = new JLabel("Direccion: ");
 		lblDireccin.setBounds(12, 148, 79, 24);
 		contentPanel.add(lblDireccin);
 		
@@ -98,31 +108,27 @@ public class InputPropietaria extends JDialog {
 		lblNcuenta.setBounds(12, 222, 84, 24);
 		contentPanel.add(lblNcuenta);
 		
-		JTextArea dni = new JTextArea();
+		
 		dni.setBounds(78, 111, 128, 22);
 		contentPanel.add(dni);
 		
-		JTextArea direccion = new JTextArea();
+		
 		direccion.setBounds(78, 149, 318, 22);
 		contentPanel.add(direccion);
 		
-		JTextArea cp = new JTextArea();
+		
 		cp.setBounds(108, 186, 98, 22);
 		contentPanel.add(cp);
-		
-		JTextArea telefono = new JTextArea();
+				
 		telefono.setBounds(330, 24, 113, 22);
 		contentPanel.add(telefono);
 		
-		JTextArea email = new JTextArea();
 		email.setBounds(289, 111, 154, 22);
 		contentPanel.add(email);
 		
-		JTextArea ncuenta = new JTextArea();
 		ncuenta.setBounds(108, 223, 261, 22);
 		contentPanel.add(ncuenta);
 		
-		JDateChooser bday = new JDateChooser();
 		bday.setBounds(152, 261, 105, 22);
 		contentPanel.add(bday);
 		{
@@ -133,10 +139,10 @@ public class InputPropietaria extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+						//java.time.LocalDate date = bday.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 						
 						Propietaria propietaria = new Propietaria( dni.toString(), nombre.toString(), apellidos.toString(),
-								direccion.toString(), Integer.parseInt(telefono.getText().trim()), email.toString(), date, ncuenta.toString());
+								direccion.toString(), Integer.parseInt(telefono.getText().trim()), email.toString(), null,/*date,*/ ncuenta.toString());
 						preguntarContrato(propietaria);
 
 					}

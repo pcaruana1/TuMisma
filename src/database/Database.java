@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import tgi.project.Propietaria;
+
 
 public class Database {
 	
@@ -125,7 +127,7 @@ public class Database {
 				{System.out.println(e.getMessage());}
 			}
 	
-	public static void buscarPropietaria(String dni_propietaria)
+	public static Propietaria buscarPropietaria(String dni_propietaria)
 	{
 		/**DEVOLVER OBJETO*/
 		try{
@@ -142,25 +144,39 @@ public class Database {
 			
 			
 			ResultSet rs = statement.executeQuery(solicitud);
+			int id;
+			String dni;
+			String nombre;
+			String apellido;
+			String domicilio;
+			int telefono;
+			String email;
+			//java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
+			String ncuenta;
 
 			while(rs.next()){
-				int id = rs.getInt("id_propietaria");
-				String dni = rs.getString("DNI_propietaria");
-				String nombre = rs.getString("nombre_propietaria");
-				String apellido = rs.getString("apellidos_propietaria");
-				String domicilio = rs.getString("domicilio_propietaria");
-				int telefono = rs.getInt("telefono_propietaria");
-				String email = rs.getString("email_propietaria");
+				id = rs.getInt("id_propietaria");
+				dni = rs.getString("DNI_propietaria");
+				nombre = rs.getString("nombre_propietaria");
+				apellido = rs.getString("apellidos_propietaria");
+				domicilio = rs.getString("domicilio_propietaria");
+				telefono = rs.getInt("telefono_propietaria");
+				email = rs.getString("email_propietaria");
 				//java.sql.Date date = rs.getDate("fecha_de_nacimiento_propietaria");
-				String ncuenta = rs.getString("ncuenta_propietaria");
+				ncuenta = rs.getString("ncuenta_propietaria");
 				System.out.println("Propietaria: " + id +" "+ dni +" "+ nombre + " " + apellido + "\n"
 						+ domicilio +" "+ telefono +" "+ email +" "+ /*date.toString() +*/ ncuenta);
-			}
+				
+				Propietaria propietaria = new Propietaria(dni, nombre, apellido, domicilio, telefono, email, null, ncuenta);
+				return propietaria;
+				}
 			rs.close();
 			statement.close();
 			c.close();
-				}catch (Exception e)
+			
+			}catch (Exception e)
 				{System.out.println(e.getMessage());}
+			return null;
 			}
 	
 	
