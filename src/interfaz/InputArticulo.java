@@ -22,20 +22,17 @@ import java.awt.event.ActionEvent;
 public class InputArticulo extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			InputArticulo dialog = new InputArticulo();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	
+	JTextArea marca = new JTextArea();
+	JTextArea tipo = new JTextArea();
+	JTextArea talla = new JTextArea();
+	JTextArea color = new JTextArea();
+	JTextArea fianza = new JTextArea();
+	JTextArea precioAlquiler = new JTextArea();
+	JTextArea precioVenta = new JTextArea();
+	JTextArea comentarios = new JTextArea();
+	JTextArea imagen = new JTextArea();
+	
 	/**
 	 * Create the dialog.
 	 */
@@ -92,39 +89,39 @@ public class InputArticulo extends JDialog {
 			contentPanel.add(lblImagen);
 		}
 		
-		JTextArea marca = new JTextArea();
+		
 		marca.setBounds(69, 10, 125, 22);
 		contentPanel.add(marca);
 		
-		JTextArea tipo = new JTextArea();
+		
 		tipo.setBounds(69, 36, 125, 22);
 		contentPanel.add(tipo);
 		
-		JTextArea talla = new JTextArea();
+		
 		talla.setBounds(69, 65, 125, 22);
 		contentPanel.add(talla);
 		
-		JTextArea color = new JTextArea();
+		
 		color.setBounds(69, 95, 125, 22);
 		contentPanel.add(color);
 		
-		JTextArea fianza = new JTextArea();
+		
 		fianza.setBounds(69, 127, 125, 22);
 		contentPanel.add(fianza);
 		
-		JTextArea precioAlquiler = new JTextArea();
+		
 		precioAlquiler.setBounds(114, 160, 125, 22);
 		contentPanel.add(precioAlquiler);
 		
-		JTextArea precioVenta = new JTextArea();
+		
 		precioVenta.setBounds(114, 189, 125, 22);
 		contentPanel.add(precioVenta);
 		
-		JTextArea comentarios = new JTextArea();
+		
 		comentarios.setBounds(114, 221, 125, 22);
 		contentPanel.add(comentarios);
 		
-		JTextArea imagen = new JTextArea();
+		
 		imagen.setBounds(114, 247, 125, 22);
 		contentPanel.add(imagen);
 		{
@@ -135,12 +132,9 @@ public class InputArticulo extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						Articulo articulo = new Articulo(null, marca.toString(), tipo.toString(),
-								true, Integer.parseInt(talla.getText()), color.toString(),
-								Integer.parseInt(fianza.getText()), Integer.parseInt(precioAlquiler.getText()),
-								Integer.parseInt(precioVenta.getText()), imagen.toString(), comentarios.toString());
-						precioTasacion(articulo);
-						masArticulos();
+						//Crea un articulo y un contrato articulo
+						precioTasacion(crearArticulo());
+
 				}
 				});
 				okButton.setActionCommand("OK");
@@ -157,36 +151,21 @@ public class InputArticulo extends JDialog {
 		
 	}
 	
+	public Articulo crearArticulo()
+	{
+		Articulo articulo = new Articulo(null, this.marca.toString(), this.tipo.toString(),
+				true, Integer.parseInt(this.talla.getText()), this.color.toString(),
+				Integer.parseInt(this.fianza.getText()), Integer.parseInt(this.precioAlquiler.getText()),
+				Integer.parseInt(this.precioVenta.getText()), this.imagen.toString(), this.comentarios.toString());
+	
+		return articulo;
+	}
 	
 	public ContratoPropietariaArticulo precioTasacion(Articulo articulo){
-		// a jframe here isn't strictly necessary, but it makes the example a little more real
-	    JFrame frame = new JFrame("Precio Tasacion");
 
-	    // prompt the user to enter their name
-	    String precio = JOptionPane.showInputDialog(frame, "Introduzca el precio de tasacion:");
+	    String precio = JOptionPane.showInputDialog(null, "Introduzca el precio de tasacion:");
 	    return Metodos.crearContratoArticulo(articulo, Integer.parseInt(precio));
 		}
-	
-	@SuppressWarnings("static-access")
-	public void masArticulos(){
-		Object[] options = {"Si", "No"};
-		int n = JOptionPane.showOptionDialog(this,
-		    "¿Desea añadir más articulos al contrato?",
-		    "",
-		    JOptionPane.YES_NO_OPTION,
-		    JOptionPane.QUESTION_MESSAGE,
-		    null,     //do not use a custom Icon
-		    options,  //the titles of buttons
-		    options[0]); //default button title
-		
-		
-		if(n==0){
-			
-			this.main(null);
-		}
-		else{
-			
-		}
-	}
+
 	
 }

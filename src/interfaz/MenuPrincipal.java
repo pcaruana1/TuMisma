@@ -40,7 +40,7 @@ public class MenuPrincipal extends JFrame {
 		JButton btnNuevaPropietaria = new JButton("Nueva Propietaria");
 		btnNuevaPropietaria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Metodos.nuevaPropietaria();
+				//Metodos.crearPropietaria(this);
 			}
 		});
 		btnNuevaPropietaria.setBounds(114, 55, 139, 34);

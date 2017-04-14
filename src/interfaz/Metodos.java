@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -24,38 +25,58 @@ public class Metodos {
 		InputPropietaria dialog = new InputPropietaria();
 		dialog.modificar=true;
 		dialog.setVisible(true);
-		Propietaria propietaria = new Propietaria( dialog.dni.toString(), dialog.nombre.toString(),
-			dialog.apellidos.toString(), dialog.direccion.toString(), Integer.parseInt(dialog.cp.getText().trim()),
-			Integer.parseInt(dialog.telefono.getText().trim()), dialog.email.toString(), null,/*date,*/ dialog.ncuenta.toString());
-
+		
+		//CREO PROPIETARIA
+		
+//		Propietaria propietaria = new Propietaria(dialog.dni.toString(), dialog.nombre.toString(),
+//				dialog.apellidos.toString(), dialog.direccion.toString(), Integer.parseInt(dialog.cp.getText().trim()),
+//				Integer.parseInt(dialog.telefono.getText().trim()), dialog.email.toString(), null,/*date,*/ dialog.ncuenta.toString());
+//		
+		
 		//INSERTAR PROPIETARIA A LA BD
 		dialog.setVisible(false);
 		dialog = null;
 		
-		preguntarContrato(propietaria);
 	}
 	
-	public static void preguntarContrato(Propietaria propietaria)
+	
+	public static void nuevoArticulo()
 	{
-		String[] buttons = {"Si", "No"};
-
-	    int respuesta = JOptionPane.showOptionDialog(null,  "¿Desea crear un contrato para la propietaria?", 
-	    		"Datos propietaria",
-	        JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[2]);
-
-	   	
-			if(respuesta==0){
+		//Input articulo
+		try {
+			InputArticulo dialog = new InputArticulo();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 				
-				//Crea el contrato y lo añade a la lista de contratos de la propietaria			
-				Metodos.updatePropietaria(Metodos.crearContratoPropietaria(propietaria), propietaria);				
-				InputArticulo.main(null);
-			}
-			
-			/*else{
-				//AÑADIR PROPIETARIA A LA BD
-			}*/
-			
+	}
 		
+
+	
+	
+	public static void masArticulos(){
+		Object[] options = {"Si", "No"};
+		int n = JOptionPane.showOptionDialog(null,
+		    "¿Desea añadir más articulos al contrato?",
+		    "",
+		    JOptionPane.YES_NO_OPTION,
+		    JOptionPane.QUESTION_MESSAGE,
+		    null,     //do not use a custom Icon
+		    options,  //the titles of buttons
+		    options[0]); //default button title
+		
+		
+		if(n==0){
+			
+			nuevoArticulo();
+			
+		}
+		else{
+			
+		}
 	}
 	
 	//Crea un contrato con los datos de la propietaria

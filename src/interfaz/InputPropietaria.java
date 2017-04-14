@@ -43,6 +43,7 @@ public class InputPropietaria extends JDialog {
 	JTextArea ncuenta = new JTextArea();
 	JTextArea bday = new JTextArea();
 	boolean modificar;
+	Propietaria propietaria;
 	
 	public static void main(String[] args) {
 		try {
@@ -148,8 +149,8 @@ public class InputPropietaria extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
-						Metodos.nuevaPropietaria();						
+						propietaria=crearPropietaria();
+						preguntarContrato(propietaria);						
 					}
 				});
 				
@@ -167,6 +168,39 @@ public class InputPropietaria extends JDialog {
 		
 		}
 	}
+	public static void preguntarContrato(Propietaria propietaria)
+	{
+		String[] buttons = {"Si", "No"};
+
+	    int respuesta = JOptionPane.showOptionDialog(null,  "¿Desea crear un contrato para la propietaria?", 
+	    		"Datos propietaria",
+	        JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[2]);
+
+	   	
+			if(respuesta==0){
+				
+				//Crea el contrato y lo añade a la lista de contratos de la propietaria			
+				Metodos.updatePropietaria(Metodos.crearContratoPropietaria(propietaria), propietaria);	
+				
+				//Solicita datos del articulo
+				Metodos.nuevoArticulo();
+				
+			}
+			/*else{
+			//AÑADIR PROPIETARIA A LA BD
+		}*/
+	}
+	
+	public Propietaria crearPropietaria()
+	{
+		Propietaria propietaria = new Propietaria(this.dni.toString(), this.nombre.toString(),
+				this.apellidos.toString(), this.direccion.toString(), Integer.parseInt(this.cp.getText().trim()),
+				Integer.parseInt(this.telefono.getText().trim()), this.email.toString(), null,/*date,*/ this.ncuenta.toString());
+		return propietaria;	
+		
+	}
+	
+	
 	
 	
 }
