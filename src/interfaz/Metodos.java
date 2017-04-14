@@ -190,7 +190,18 @@ public class Metodos {
         m.cp.setText(Integer.toString(propietaria.getCodigopostal_propietaria()));
 		m.email.setText(propietaria.getEmail_propietaria());
 		m.ncuenta.setText(propietaria.getNcuenta_propietaria());
-		m.modificar=true;
+		JButton btnNewButton = new JButton("Guardar");
+		m.buttonPane.add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Database.borrarPropietaria(propietaria);
+				m.crearPropietaria();
+				//Database.insertarPropietaria(m.propietaria);
+				/**MODIFICAR ESOS DATOS*/
+			}
+		});
+	
 		
 		m.setVisible(true);		
 	}

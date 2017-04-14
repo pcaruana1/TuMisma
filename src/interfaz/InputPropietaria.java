@@ -140,13 +140,8 @@ public class InputPropietaria extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				System.out.println(modificar);
-				if(modificar==true){
-					JButton btnNewButton = new JButton("Guardar");
-					buttonPane.add(btnNewButton);
-					}
 				
-				else{
+					
 				
 			}
 
@@ -156,7 +151,7 @@ public class InputPropietaria extends JDialog {
 			
 		}
 		
-		}
+		
 	}
 		
 	public void crearPropietaria()

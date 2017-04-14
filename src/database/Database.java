@@ -7,6 +7,7 @@ import java.util.List;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
@@ -256,6 +257,26 @@ public class Database {
 	{
 		
 	}
+	
+//	public static void updatePropietaria(Propietaria propietaria){
+//		try{
+//			//Encuentra el driver
+//			Class.forName("org.sqlite.JDBC");
+//			
+//			//Ese driver crea una conexion con la base de datos tienda.db
+//			Connection c = DriverManager.getConnection("jdbc:sqlite:C:/Users/Patty/Documents/TuMisma/tienda.db");
+//			
+//			
+//		Statement stmt = c.createStatement();
+//		String sql = "UPDATE propietaria SET DNI_propietaria=" + propietaria.getDNI_propietaria() + " WHERE u_id = " + propietaria.getId_propietaria() +";";
+//		stmt.executeUpdate(sql);
+//		System.out.println("Update finished.");
+//		
+//		stmt.close();
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+//	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
