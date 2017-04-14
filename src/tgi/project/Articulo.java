@@ -24,7 +24,7 @@ public class Articulo
     private String comentarios;
     private ContratoPropietariaArticulo contrato;
     private ComprasProveedor compra_proveedor;
-    private ArrayList<Alquilar> lista_alquileres;
+    private ArrayList<Alquilar> lista_alquileres = new ArrayList<Alquilar>();
 
     /**
      * Constructor general de Articulo

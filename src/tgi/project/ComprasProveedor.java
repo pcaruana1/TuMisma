@@ -13,7 +13,6 @@ public class ComprasProveedor
 {
     // instance variables - replace the example below with your own
     private int id_ticket;
-    private int id_proveedor;
     private int precio_final;
     private LocalDate fecha_compra;
     private ArrayList<Articulo> lista_art_comprados;
@@ -36,8 +35,7 @@ public class ComprasProveedor
 			LocalDate fecha_compra,
 			ArrayList<Articulo> lista_art_comprados, Proveedor proveedor) {
 		super();
-		this.id_ticket = id_ticket;
-		this.id_proveedor = id_proveedor;
+		this.id_ticket = id_ticket;		
 		this.precio_final = precio_final;
 		this.fecha_compra = fecha_compra;
 		this.lista_art_comprados = lista_art_comprados;
@@ -50,14 +48,6 @@ public class ComprasProveedor
 
 	public void setId_ticket(int id_ticket) {
 		this.id_ticket = id_ticket;
-	}
-
-	public int getId_proveedor() {
-		return id_proveedor;
-	}
-
-	public void setId_proveedor(int id_proveedor) {
-		this.id_proveedor = id_proveedor;
 	}
 
 	public int getPrecio_final() {

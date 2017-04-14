@@ -18,7 +18,7 @@ public class PagosPropietaria
     private int forma_pago;
     private LocalDate fecha_pago;
     private boolean pagado;
-    private ArrayList<Alquilar> lista_alquileres;
+    private ArrayList<Alquilar> lista_alquileres = new ArrayList<Alquilar>();
     
     /**
      * Constructor for objects of class PagosPropietaria

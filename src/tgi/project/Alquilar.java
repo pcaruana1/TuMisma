@@ -21,7 +21,7 @@ public class Alquilar
     private int seguro;
     private String codigo_descuento;
     private PagosPropietaria pago;
-    private ArrayList<Articulo> lista_articulos;
+    private ArrayList<Articulo> lista_articulos= new ArrayList<Articulo>();
     private ClientaAlquiler clienta;
     /**
      * Constructor for objects of class Alquiler

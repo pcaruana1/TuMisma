@@ -161,10 +161,10 @@ public class InputPropietaria extends JDialog {
 		
 	public void crearPropietaria()
 	{
-		this.propietaria = new Propietaria(this.dni.toString(), this.nombre.toString(),
-				this.apellidos.toString(), this.direccion.toString(), Integer.parseInt(this.cp.getText().trim()),
-				Integer.parseInt(this.telefono.getText().trim()), this.email.toString(), null,/*date,*/ this.ncuenta.toString());
-		System.out.println(propietaria.getApellidos_propietaria());
+		this.propietaria = new Propietaria(this.dni.getText(), this.nombre.getText(),
+				this.apellidos.getText(), this.direccion.getText(), Integer.parseInt(this.cp.getText().trim()),
+				Integer.parseInt(this.telefono.getText().trim()), this.email.getText(), null,/*date,*/ this.ncuenta.getText());
+		
 	}
 	
 	

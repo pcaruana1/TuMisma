@@ -11,9 +11,9 @@ public class CompraArticuloProveedor
 {
     // instance variables - replace the example below with your own
     private int id_ticket;
-    private int nref_tienda_proveedor;
+    private Proveedor nref_tienda_proveedor;
     private int precio_unidad;
-    private int nref_articulo;
+    private Articulo nref_articulo;
 
     /**
      * Constructor for objects of class ComprasProveedorArticulo
@@ -36,14 +36,6 @@ public class CompraArticuloProveedor
 		this.id_ticket = id_ticket;
 	}
 
-	public int getNref_tienda_proveedor() {
-		return nref_tienda_proveedor;
-	}
-
-	public void setNref_tienda_proveedor(int nref_tienda_proveedor) {
-		this.nref_tienda_proveedor = nref_tienda_proveedor;
-	}
-
 	public int getPrecio_unidad() {
 		return precio_unidad;
 	}
@@ -52,14 +44,22 @@ public class CompraArticuloProveedor
 		this.precio_unidad = precio_unidad;
 	}
 
-	public int getNref_articulo() {
+	public Proveedor getNref_tienda_proveedor() {
+		return nref_tienda_proveedor;
+	}
+
+	public void setNref_tienda_proveedor(Proveedor nref_tienda_proveedor) {
+		this.nref_tienda_proveedor = nref_tienda_proveedor;
+	}
+
+	public Articulo getNref_articulo() {
 		return nref_articulo;
 	}
 
-	public void setNref_articulo(int nref_articulo) {
+	public void setNref_articulo(Articulo nref_articulo) {
 		this.nref_articulo = nref_articulo;
 	}
-
+	
     
    
 }

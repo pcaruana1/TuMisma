@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.awt.event.ActionEvent;
+import static java.lang.Thread.sleep;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,30 +35,56 @@ public class Metodos {
 		JButton okButton = new JButton("OK");
 		dialog.buttonPane.add(okButton);
 		
-
 		
 		//Añado un evento al boton
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dialog.crearPropietaria();
-				System.out.println(dialog.propietaria.getNombre_propietaria());
+				/**INSERTAR PROPIETARIA*/
+				
 				if(preguntarContrato()) {
 					
 					//Crea el contrato y lo añade a la lista de contratos de la propietaria
-					ContratoPropietaria c = crearContratoPropietaria(dialog.propietaria);
-					System.out.println(c.getNcontrato_propietaria());
+					final ContratoPropietaria c = crearContratoPropietaria(dialog.propietaria);
+					/**INSERTAR CONTRATO PROPIETARIA*/
 					updatePropietaria(c, dialog.propietaria);
+					/**MODIFICAR PROPIETARIA*/
 					
 					//Solicita datos del articulo
-					Articulo a = nuevoArticulo();
-					ContratoPropietariaArticulo ca = precioTasacion(a);
-					updateContrato(c, ca);
+					final InputArticulo dialog2 = new InputArticulo();
+					dialog2.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog2.setVisible(true);
+					
+					//creo boton ok
+					JButton okButton = new JButton("OK");
+					okButton.setActionCommand("OK");
+					dialog2.buttonPane.add(okButton);
+					
+					okButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							//Crea un articulo un contrato articulo
+							dialog2.crearArticulo();
+							
+							System.out.println("color articulo: " + dialog2.articulo.getColor());
+							/**INSERTAR ARTICULO*/
+							ContratoPropietariaArticulo ca = precioTasacion(dialog2.articulo);
+							System.out.println(ca.getPrecio_tasacion());
+							/**INSERTAR CONTRATO ARTICULO*/
+							updateArticulo(dialog2.articulo, ca);
+							/**MODIFICAR ARTICULO*/
+				//ERROR AQUI NULL POINTER
+							updateContrato(c, ca);
+							/**MODIFICAR CONTRATO PROPIETARIA*/
+						}
+					});
 				}
 				else{
-					//AÑADO PROPIETARIA
+					
 				}
 			}
 		});
+		
+
 		okButton.setActionCommand("OK");
 			
 		//dialog.setVisible(false);
@@ -86,32 +113,7 @@ public class Metodos {
 
 	
 	
-	public static Articulo nuevoArticulo()
-	{
-		//Input articulo
-		try {
-			final InputArticulo dialog = new InputArticulo();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-			JButton okButton = new JButton("OK");
-			okButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					//Crea un articulo un contrato articulo
-					dialog.articulo = dialog.crearArticulo();
-
-			}
-			});
-			okButton.setActionCommand("OK");
-			dialog.buttonPane.add(okButton);
-			
-			return dialog.articulo;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-				
-	}
+	
 		
 	public static ContratoPropietariaArticulo precioTasacion(Articulo articulo){
 
@@ -134,7 +136,7 @@ public class Metodos {
 		
 		if(n==0){
 			
-			nuevoArticulo();
+			//nuevoArticulo();
 			
 		}
 		else{
@@ -142,17 +144,20 @@ public class Metodos {
 		}
 	}
 	
+
 	//Crea un contrato con los datos de la propietaria
 	public static ContratoPropietaria crearContratoPropietaria(Propietaria propietaria)
 	{
-		ContratoPropietaria c = new ContratoPropietaria(0, propietaria, 0);
-		return c;
+		 return new ContratoPropietaria(1, propietaria, 1);
+		
 	}
 	
 	//Añade el contrato a la lista de contratos de la propietaria
 	public static void updatePropietaria(ContratoPropietaria c, Propietaria propietaria)
 	{
-		propietaria.getLista_contratos().add(c);
+		ArrayList<ContratoPropietaria> lista = propietaria.getLista_contratos();
+		lista.add(c);
+		propietaria.setLista_contratos(lista);
 	}
 	
 	//Crea un contrato con los datos del articulo
@@ -162,10 +167,17 @@ public class Metodos {
 		return c;		
 	}
 	
+	public static void updateArticulo(Articulo a, ContratoPropietariaArticulo ca)
+	{
+		a.setContrato(ca);
+	}
+	
 	//Añade el contrato con datos del articulo a la lista del contrato
 	public static void updateContrato(ContratoPropietaria c, ContratoPropietariaArticulo c_articulo)
 	{
-		c.getLista_articulos().add(c_articulo);
+		ArrayList<ContratoPropietariaArticulo> lista = c.getLista_articulos();
+		lista.add(c_articulo);
+		c.setLista_articulos(lista);
 	}
 	
 	//Mostrar datos propietaria

@@ -144,14 +144,14 @@ public class InputArticulo extends JDialog {
 		
 	}
 	
-	public Articulo crearArticulo()
+	public void crearArticulo()
 	{
-		Articulo articulo = new Articulo(null, this.marca.toString(), this.tipo.toString(),
-				true, Integer.parseInt(this.talla.getText()), this.color.toString(),
+		this.articulo = new Articulo(null, this.marca.getText(), this.tipo.getText(),
+				true, Integer.parseInt(this.talla.getText()), this.color.getText(),
 				Integer.parseInt(this.fianza.getText()), Integer.parseInt(this.precioAlquiler.getText()),
-				Integer.parseInt(this.precioVenta.getText()), this.imagen.toString(), this.comentarios.toString());
+				Integer.parseInt(this.precioVenta.getText()), this.imagen.getText(), this.comentarios.getText());
 	
-		return articulo;
+
 	}
 
 

@@ -24,7 +24,7 @@ public class ClientaAlquiler
     private LocalDate fecha_de_alta_clienta_alquiler;
     private int descuento_clienta_alquiler;
     private LocalDate fecha_de_nacimiento_clienta_alquiler;
-    private ArrayList<Alquilar> lista_alquileres;
+    private ArrayList<Alquilar> lista_alquileres= new ArrayList<Alquilar>();
 
     /**
      * Constructor for objects of class ClientaAlquiler

@@ -22,8 +22,8 @@ public class Propietaria
     private String email_propietaria;
     private LocalDate fecha_de_nacimiento_propietaria;
     private String ncuenta_propietaria;
-    private ArrayList<ContratoPropietaria> lista_contratos;
-    private ArrayList<PagosPropietaria> lista_pagos;
+    private ArrayList<ContratoPropietaria> lista_contratos = new ArrayList<ContratoPropietaria>();
+    private ArrayList<PagosPropietaria> lista_pagos= new ArrayList<PagosPropietaria>();
 
     /**
      * Constructor for objects of class Propietaria
