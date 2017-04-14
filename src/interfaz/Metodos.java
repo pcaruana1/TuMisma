@@ -44,11 +44,7 @@ public class Metodos {
 				
 				if(preguntarContrato()) {
 					
-					//Crea el contrato y lo añade a la lista de contratos de la propietaria
-					final ContratoPropietaria c = crearContratoPropietaria(dialog.propietaria);
-					/**INSERTAR CONTRATO PROPIETARIA*/
-					updatePropietaria(c, dialog.propietaria);
-					/**MODIFICAR PROPIETARIA*/
+					
 					
 					//Solicita datos del articulo
 					final InputArticulo dialog2 = new InputArticulo();
@@ -62,17 +58,19 @@ public class Metodos {
 					
 					okButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
+							//Crea el contrato y lo añade a la lista de contratos de la propietaria
+							ContratoPropietaria c = crearContratoPropietaria(dialog.propietaria);
+							/**INSERTAR CONTRATO PROPIETARIA*/
+							updatePropietaria(c, dialog.propietaria);
+							/**MODIFICAR PROPIETARIA*/
 							//Crea un articulo un contrato articulo
-							dialog2.crearArticulo();
+							dialog2.crearArticulo();					
 							
-							System.out.println("color articulo: " + dialog2.articulo.getColor());
 							/**INSERTAR ARTICULO*/
 							ContratoPropietariaArticulo ca = precioTasacion(dialog2.articulo);
-							System.out.println(ca.getPrecio_tasacion());
 							/**INSERTAR CONTRATO ARTICULO*/
 							updateArticulo(dialog2.articulo, ca);
 							/**MODIFICAR ARTICULO*/
-				//ERROR AQUI NULL POINTER
 							updateContrato(c, ca);
 							/**MODIFICAR CONTRATO PROPIETARIA*/
 						}

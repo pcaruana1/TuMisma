@@ -16,7 +16,7 @@ public class ContratoPropietaria
     private LocalDate fecha_fin_de_contrato;
     private int nrenovaciones_contrato;
     private Propietaria propietaria;
-    private ArrayList<ContratoPropietariaArticulo> lista_articulos;
+    private ArrayList<ContratoPropietariaArticulo> lista_articulos = new ArrayList<>();
     /**
      * Constructor for objects of class Contrato
      */   
