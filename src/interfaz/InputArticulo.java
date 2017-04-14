@@ -32,6 +32,8 @@ public class InputArticulo extends JDialog {
 	JTextArea precioVenta = new JTextArea();
 	JTextArea comentarios = new JTextArea();
 	JTextArea imagen = new JTextArea();
+	JPanel buttonPane = new JPanel();
+	Articulo articulo;
 	
 	/**
 	 * Create the dialog.
@@ -125,21 +127,12 @@ public class InputArticulo extends JDialog {
 		imagen.setBounds(114, 247, 125, 22);
 		contentPanel.add(imagen);
 		{
-			JPanel buttonPane = new JPanel();
+			
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						//Crea un articulo y un contrato articulo
-						precioTasacion(crearArticulo());
-
-				}
-				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				
+				
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
@@ -160,12 +153,7 @@ public class InputArticulo extends JDialog {
 	
 		return articulo;
 	}
-	
-	public ContratoPropietariaArticulo precioTasacion(Articulo articulo){
 
-	    String precio = JOptionPane.showInputDialog(null, "Introduzca el precio de tasacion:");
-	    return Metodos.crearContratoArticulo(articulo, Integer.parseInt(precio));
-		}
 
 	
 }

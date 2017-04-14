@@ -42,6 +42,7 @@ public class InputPropietaria extends JDialog {
 	JTextArea email = new JTextArea();
 	JTextArea ncuenta = new JTextArea();
 	JTextArea bday = new JTextArea();
+	JPanel buttonPane = new JPanel();
 	boolean modificar;
 	Propietaria propietaria;
 	
@@ -135,7 +136,7 @@ public class InputPropietaria extends JDialog {
 		bday.setBounds(152, 261, 105, 22);
 		contentPanel.add(bday);
 		{
-			JPanel buttonPane = new JPanel();
+			
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
@@ -146,19 +147,8 @@ public class InputPropietaria extends JDialog {
 					}
 				
 				else{
-				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						propietaria=crearPropietaria();
-						preguntarContrato(propietaria);						
-					}
-				});
 				
-				
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-				}
+			}
 
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setActionCommand("Cancel");
@@ -168,36 +158,13 @@ public class InputPropietaria extends JDialog {
 		
 		}
 	}
-	public static void preguntarContrato(Propietaria propietaria)
+		
+	public void crearPropietaria()
 	{
-		String[] buttons = {"Si", "No"};
-
-	    int respuesta = JOptionPane.showOptionDialog(null,  "¿Desea crear un contrato para la propietaria?", 
-	    		"Datos propietaria",
-	        JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[2]);
-
-	   	
-			if(respuesta==0){
-				
-				//Crea el contrato y lo añade a la lista de contratos de la propietaria			
-				Metodos.updatePropietaria(Metodos.crearContratoPropietaria(propietaria), propietaria);	
-				
-				//Solicita datos del articulo
-				Metodos.nuevoArticulo();
-				
-			}
-			/*else{
-			//AÑADIR PROPIETARIA A LA BD
-		}*/
-	}
-	
-	public Propietaria crearPropietaria()
-	{
-		Propietaria propietaria = new Propietaria(this.dni.toString(), this.nombre.toString(),
+		this.propietaria = new Propietaria(this.dni.toString(), this.nombre.toString(),
 				this.apellidos.toString(), this.direccion.toString(), Integer.parseInt(this.cp.getText().trim()),
 				Integer.parseInt(this.telefono.getText().trim()), this.email.toString(), null,/*date,*/ this.ncuenta.toString());
-		return propietaria;	
-		
+		System.out.println(propietaria.getApellidos_propietaria());
 	}
 	
 	

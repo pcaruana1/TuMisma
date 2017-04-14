@@ -1,10 +1,13 @@
 package interfaz;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,39 +25,99 @@ public class Metodos {
 	//Nueva propietaria
 	public static void nuevaPropietaria()
 	{
-		InputPropietaria dialog = new InputPropietaria();
-		dialog.modificar=true;
+		
+		//Creo el formulario de entrada de datos
+		final InputPropietaria dialog = new InputPropietaria();
 		dialog.setVisible(true);
 		
-		//CREO PROPIETARIA
+		//Creo boton para añadir propietaria
+		JButton okButton = new JButton("OK");
+		dialog.buttonPane.add(okButton);
 		
-//		Propietaria propietaria = new Propietaria(dialog.dni.toString(), dialog.nombre.toString(),
-//				dialog.apellidos.toString(), dialog.direccion.toString(), Integer.parseInt(dialog.cp.getText().trim()),
-//				Integer.parseInt(dialog.telefono.getText().trim()), dialog.email.toString(), null,/*date,*/ dialog.ncuenta.toString());
-//		
+
 		
-		//INSERTAR PROPIETARIA A LA BD
-		dialog.setVisible(false);
-		dialog = null;
+		//Añado un evento al boton
+		okButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dialog.crearPropietaria();
+				System.out.println(dialog.propietaria.getNombre_propietaria());
+				if(preguntarContrato()) {
+					
+					//Crea el contrato y lo añade a la lista de contratos de la propietaria
+					ContratoPropietaria c = crearContratoPropietaria(dialog.propietaria);
+					System.out.println(c.getNcontrato_propietaria());
+					updatePropietaria(c, dialog.propietaria);
+					
+					//Solicita datos del articulo
+					Articulo a = nuevoArticulo();
+					ContratoPropietariaArticulo ca = precioTasacion(a);
+					updateContrato(c, ca);
+				}
+				else{
+					//AÑADO PROPIETARIA
+				}
+			}
+		});
+		okButton.setActionCommand("OK");
+			
+		//dialog.setVisible(false);
+		//dialog = null;
 		
 	}
 	
+	public static boolean preguntarContrato()
+	{
+		String[] buttons = {"Si", "No"};
+
+	    int respuesta = JOptionPane.showOptionDialog(null,  "¿Desea crear un contrato para la propietaria?", 
+	    		"Datos propietaria",
+	        JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[1]);
+
+	   	
+			if(respuesta==0){
+				
+				return true;
+				
+			}
+			else{
+				return false;
+		}
+	}
+
 	
-	public static void nuevoArticulo()
+	
+	public static Articulo nuevoArticulo()
 	{
 		//Input articulo
 		try {
-			InputArticulo dialog = new InputArticulo();
+			final InputArticulo dialog = new InputArticulo();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
+			JButton okButton = new JButton("OK");
+			okButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					//Crea un articulo un contrato articulo
+					dialog.articulo = dialog.crearArticulo();
+
+			}
+			});
+			okButton.setActionCommand("OK");
+			dialog.buttonPane.add(okButton);
+			
+			return dialog.articulo;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 				
 	}
 		
+	public static ContratoPropietariaArticulo precioTasacion(Articulo articulo){
 
+	    String precio = JOptionPane.showInputDialog(null, "Introduzca el precio de tasacion:");
+	    return Metodos.crearContratoArticulo(articulo, Integer.parseInt(precio));
+		}
 	
 	
 	public static void masArticulos(){
@@ -289,6 +352,7 @@ public class Metodos {
 			    if(respuesta == 1)
 			    {
 			    	Database.borrarPropietaria(propietaria);
+			    	JOptionPane.showConfirmDialog(null, "Propietaria borrada", "BORRADO", JOptionPane.INFORMATION_MESSAGE);
 			    }
 		    }
 		}
