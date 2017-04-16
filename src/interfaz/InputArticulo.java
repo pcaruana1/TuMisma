@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -23,15 +24,15 @@ public class InputArticulo extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	
-	JTextArea marca = new JTextArea();
-	JTextArea tipo = new JTextArea();
-	JTextArea talla = new JTextArea();
-	JTextArea color = new JTextArea();
-	JTextArea fianza = new JTextArea();
-	JTextArea precioAlquiler = new JTextArea();
-	JTextArea precioVenta = new JTextArea();
-	JTextArea comentarios = new JTextArea();
-	JTextArea imagen = new JTextArea();
+	JTextField marca = new JTextField();
+	JTextField tipo = new JTextField();
+	JTextField talla = new JTextField();
+	JTextField color = new JTextField();
+	JTextField fianza = new JTextField();
+	JTextField precioAlquiler = new JTextField();
+	JTextField precioVenta = new JTextField();
+	JTextField comentarios = new JTextField();
+	JTextField imagen = new JTextField();
 	JPanel buttonPane = new JPanel();
 	Articulo articulo;
 	
@@ -48,83 +49,83 @@ public class InputArticulo extends JDialog {
 		
 		
 		JLabel lblNewLabel = new JLabel("Marca :");
-		lblNewLabel.setBounds(12, 13, 84, 16);
+		lblNewLabel.setBounds(106, 13, 84, 16);
 		contentPanel.add(lblNewLabel);
 		{
 			JLabel lblTipo = new JLabel("Tipo :");
-			lblTipo.setBounds(12, 39, 84, 16);
+			lblTipo.setBounds(116, 40, 52, 16);
 			contentPanel.add(lblTipo);
 		}
 		{
 			JLabel lblTalla = new JLabel("Talla :");
-			lblTalla.setBounds(12, 68, 84, 16);
+			lblTalla.setBounds(106, 69, 37, 16);
 			contentPanel.add(lblTalla);
 		}
 		{
 			JLabel lblColor = new JLabel("Color :");
-			lblColor.setBounds(12, 98, 84, 16);
+			lblColor.setBounds(116, 98, 39, 16);
 			contentPanel.add(lblColor);
 		}
 		{
 			JLabel lblFianza = new JLabel("Fianza :");
-			lblFianza.setBounds(12, 132, 84, 16);
+			lblFianza.setBounds(106, 134, 84, 16);
 			contentPanel.add(lblFianza);
 		}
 		{
 			JLabel lblPrecioAlquiler = new JLabel("Precio Alquiler :");
-			lblPrecioAlquiler.setBounds(12, 163, 98, 16);
+			lblPrecioAlquiler.setBounds(60, 163, 98, 16);
 			contentPanel.add(lblPrecioAlquiler);
 		}
 		{
 			JLabel lblPrecioVenta = new JLabel("Precio Venta :");
-			lblPrecioVenta.setBounds(12, 192, 98, 16);
+			lblPrecioVenta.setBounds(70, 192, 98, 16);
 			contentPanel.add(lblPrecioVenta);
 		}
 		{
 			JLabel lblComentarios = new JLabel("Comentarios :");
-			lblComentarios.setBounds(12, 221, 98, 16);
+			lblComentarios.setBounds(70, 221, 98, 16);
 			contentPanel.add(lblComentarios);
 		}
 		{
 			JLabel lblImagen = new JLabel("Imagen :");
-			lblImagen.setBounds(12, 250, 98, 16);
+			lblImagen.setBounds(97, 250, 52, 16);
 			contentPanel.add(lblImagen);
 		}
 		
 		
-		marca.setBounds(69, 10, 125, 22);
+		marca.setBounds(172, 10, 125, 22);
 		contentPanel.add(marca);
 		
 		
-		tipo.setBounds(69, 36, 125, 22);
+		tipo.setBounds(172, 36, 125, 22);
 		contentPanel.add(tipo);
 		
 		
-		talla.setBounds(69, 65, 125, 22);
+		talla.setBounds(172, 65, 125, 22);
 		contentPanel.add(talla);
 		
 		
-		color.setBounds(69, 95, 125, 22);
+		color.setBounds(172, 95, 125, 22);
 		contentPanel.add(color);
 		
 		
-		fianza.setBounds(69, 127, 125, 22);
+		fianza.setBounds(172, 129, 125, 22);
 		contentPanel.add(fianza);
 		
 		
-		precioAlquiler.setBounds(114, 160, 125, 22);
+		precioAlquiler.setBounds(172, 160, 125, 22);
 		contentPanel.add(precioAlquiler);
 		
 		
-		precioVenta.setBounds(114, 189, 125, 22);
+		precioVenta.setBounds(172, 189, 125, 22);
 		contentPanel.add(precioVenta);
 		
 		
-		comentarios.setBounds(114, 221, 125, 22);
+		comentarios.setBounds(172, 218, 125, 22);
 		contentPanel.add(comentarios);
 		
 		
-		imagen.setBounds(114, 247, 125, 22);
+		imagen.setBounds(172, 247, 125, 22);
 		contentPanel.add(imagen);
 		{
 			
@@ -146,7 +147,7 @@ public class InputArticulo extends JDialog {
 	
 	public void crearArticulo()
 	{
-		this.articulo = new Articulo(null, this.marca.getText(), this.tipo.getText(),
+		this.articulo = new Articulo(0, this.marca.getText(), this.tipo.getText(),
 				true, Integer.parseInt(this.talla.getText()), this.color.getText(),
 				Integer.parseInt(this.fianza.getText()), Integer.parseInt(this.precioAlquiler.getText()),
 				Integer.parseInt(this.precioVenta.getText()), this.imagen.getText(), this.comentarios.getText());

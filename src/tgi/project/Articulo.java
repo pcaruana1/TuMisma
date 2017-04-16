@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Articulo
 {
-    private String nref_articulo;
+    private int nref_articulo;
     private String designer;
     private String tipo_articulo;
     private boolean disponibilidad;
@@ -30,7 +30,7 @@ public class Articulo
      * Constructor general de Articulo
      */
     
-    public Articulo(String nref_articulo, String designer, String tipo_articulo, 
+    public Articulo(int nref_articulo, String designer, String tipo_articulo, 
     boolean disponibilidad, int talla, String color, int fianza, int precioAlquiler,
     int precioVenta, String imagen, String comentarios)
     {
@@ -51,7 +51,7 @@ public class Articulo
       
 
      //Constructor de articulo comprado
-	public Articulo(String nref_articulo, String designer,
+	public Articulo(int nref_articulo, String designer,
 			String tipo_articulo, boolean disponibilidad, int talla,
 			String color, int fianza, int precioAlquiler, int precioVenta,
 			String imagen, String comentarios, ComprasProveedor compra_proveedor) {
@@ -72,14 +72,14 @@ public class Articulo
 
 
 
-	public String getNref_articulo() {
+	public int getNref_articulo() {
 		return nref_articulo;
 	}
 
 
 
 
-	public void setNref_articulo(String nref_articulo) {
+	public void setNref_articulo(int nref_articulo) {
 		this.nref_articulo = nref_articulo;
 	}
 

@@ -33,15 +33,15 @@ public class InputPropietaria extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	JTextArea nombre = new JTextArea();
-	JTextArea apellidos = new JTextArea();
-	JTextArea dni = new JTextArea();
-	JTextArea direccion = new JTextArea();
-	JTextArea cp = new JTextArea();
-	JTextArea telefono = new JTextArea();
-	JTextArea email = new JTextArea();
-	JTextArea ncuenta = new JTextArea();
-	JTextArea bday = new JTextArea();
+	JTextField nombre = new JTextField();
+	JTextField apellidos = new JTextField();
+	JTextField dni = new JTextField();
+	JTextField direccion = new JTextField();
+	JTextField cp = new JTextField();
+	JTextField telefono = new JTextField();
+	JTextField email = new JTextField();
+	JTextField ncuenta = new JTextField();
+	JTextField bday = new JTextField();
 	JPanel buttonPane = new JPanel();
 	boolean modificar;
 	Propietaria propietaria;

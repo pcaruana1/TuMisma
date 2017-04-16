@@ -40,11 +40,16 @@ public class Metodos {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dialog.crearPropietaria();
+				
+				Database db = new Database();
+				db.connection();
+
 				/**INSERTAR PROPIETARIA*/
+				dialog.propietaria.setId_propietaria(db.insertPropietaria(dialog.propietaria));
+				
 				
 				if(preguntarContrato()) {
-					
-					
+									
 					
 					//Solicita datos del articulo
 					final InputArticulo dialog2 = new InputArticulo();
@@ -58,20 +63,37 @@ public class Metodos {
 					
 					okButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
+							
+														
 							//Crea el contrato y lo añade a la lista de contratos de la propietaria
 							ContratoPropietaria c = crearContratoPropietaria(dialog.propietaria);
-							/**INSERTAR CONTRATO PROPIETARIA*/
 							updatePropietaria(c, dialog.propietaria);
-							/**MODIFICAR PROPIETARIA*/
-							//Crea un articulo un contrato articulo
-							dialog2.crearArticulo();					
+							
+							/**INSERTAR CONTRATO PROPIETARIA*/
+							c.setNcontrato_propietaria(db.insertContratoProp(c));
+							
+							
+							//Crea un articulo y un contrato de articulo
+							dialog2.crearArticulo();
 							
 							/**INSERTAR ARTICULO*/
+							dialog2.articulo.setNref_articulo(db.insertArticulo(dialog2.articulo));
+							
+							
 							ContratoPropietariaArticulo ca = precioTasacion(dialog2.articulo);
-							/**INSERTAR CONTRATO ARTICULO*/
+							ca.setContrato(c);
+							
+							//Añade el contrato al articulo
 							updateArticulo(dialog2.articulo, ca);
-							/**MODIFICAR ARTICULO*/
+							
+							//Añade el contrato articulo a la lista de contratos propietaria
 							updateContrato(c, ca);
+														
+							/**INSERTAR CONTRATO ARTICULO*/
+							db.insertContratoPropArt(ca);
+							
+							
+							
 							/**MODIFICAR CONTRATO PROPIETARIA*/
 						}
 					});
@@ -146,7 +168,7 @@ public class Metodos {
 	//Crea un contrato con los datos de la propietaria
 	public static ContratoPropietaria crearContratoPropietaria(Propietaria propietaria)
 	{
-		 return new ContratoPropietaria(1, propietaria, 1);
+		 return new ContratoPropietaria(propietaria, 0);
 		
 	}
 	
@@ -195,7 +217,10 @@ public class Metodos {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Database.borrarPropietaria(propietaria);
+				Database db = new Database();
+				db.connection();
+				db.deletePropietaria(propietaria);
+				db.disconnection();
 				m.crearPropietaria();
 				//Database.insertarPropietaria(m.propietaria);
 				/**MODIFICAR ESOS DATOS*/
@@ -210,7 +235,11 @@ public class Metodos {
 	
 	public static void mostrarTodasPropietarias()
 	{
-		List<Propietaria> lista_propietarias =Database.mostrarPropietarias();
+		Database db = new Database();
+		db.connection();
+	
+		
+		List<Propietaria> lista_propietarias =db.mostrarPropietarias();
 		
 		Iterator<Propietaria> rs = lista_propietarias.iterator();
 	
@@ -235,14 +264,19 @@ public class Metodos {
 					    str.append("\n");
 					}
 			JOptionPane.showMessageDialog(null,str.toString());
-
+			
+			db.disconnection();
 
 	}
 	
 	//Mostrar articulos	
 		public static void mostrarTodosArticulos()
 		{
-			List<Articulo> lista_articulos =Database.mostrarArticulos();
+
+			Database db = new Database();
+			db.connection();
+			
+			List<Articulo> lista_articulos =db.mostrarArticulos();
 			
 			Iterator<Articulo> rs = lista_articulos.iterator();
 		
@@ -270,12 +304,16 @@ public class Metodos {
 						    str.append("\n");
 						}
 				JOptionPane.showMessageDialog(null,str.toString());
+				db.disconnection();
+			
 		}
 		
 	//Mostrar contratos propietarias
 		public static void mostrarTodosContratosPropietarias()
-		{
-			List<ContratoPropietaria> lista_contratos = Database.mostrarContratosPropietarias();
+		{			
+			Database db = new Database();
+			db.connection();
+			List<ContratoPropietaria> lista_contratos = db.mostrarContratosPropietarias();
 			
 			Iterator<ContratoPropietaria> rs = lista_contratos.iterator();
 		
@@ -296,6 +334,7 @@ public class Metodos {
 						    str.append("\n\n");
 						}
 				JOptionPane.showMessageDialog(null,str.toString());
+				db.disconnection();
 		}
 	//Buscar propietarias		
 		public static void buscarPropietariasDNI(){	
@@ -308,7 +347,10 @@ public class Metodos {
 		        "BUSCAR PROPIETARIA", 
 		        JOptionPane.WARNING_MESSAGE);	
 		    
-		    List<Propietaria> lista_propietarias =Database.buscarPropietaria(dni);
+		    Database db = new Database();
+			db.connection();
+		    
+		    List<Propietaria> lista_propietarias =db.buscarPropietaria(dni);
 		    
 			
 		    if(lista_propietarias.isEmpty()) 
@@ -338,7 +380,7 @@ public class Metodos {
 						    str.append(", telefono: " + propietaria.getTelefono_propietaria());
 						    str.append(", email: " + propietaria.getEmail_propietaria());
 						    str.append(", ncuenta: " + propietaria.getNcuenta_propietaria());
-						    lista_contratos=Database.buscarContrato(propietaria);
+						    lista_contratos=db.buscarContrato(propietaria);
 						    
 						    if(lista_contratos.isEmpty()){
 						    	str.append("\nNo tiene contratos");
@@ -357,6 +399,8 @@ public class Metodos {
 						    //new line
 						    str.append("\n\n");
 						}
+						
+				db.disconnection();
 				
 				String[] buttons = { "Modificar", "Borrar", "Cancelar" };
 
@@ -372,9 +416,12 @@ public class Metodos {
 			     
 			    if(respuesta == 1)
 			    {
-			    	Database.borrarPropietaria(propietaria);
-			    	JOptionPane.showConfirmDialog(null, "Propietaria borrada", "BORRADO", JOptionPane.INFORMATION_MESSAGE);
+			    	db.connection();
+			    	db.deletePropietaria(propietaria);
+			    	System.out.println("Borrado");
+			    	db.disconnection();
 			    }
 		    }
+		    
 		}
 }

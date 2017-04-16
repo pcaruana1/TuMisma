@@ -14,6 +14,15 @@ public class ContratoPropietariaArticulo {
 	}
 
 
+	public ContratoPropietariaArticulo(Articulo articulo,
+			ContratoPropietaria contrato, int precio_tasacion) {
+		super();
+		this.articulo = articulo;
+		this.contrato = contrato;
+		this.precio_tasacion = precio_tasacion;
+	}
+
+
 	public Articulo getArticulo() {
 		return articulo;
 	}

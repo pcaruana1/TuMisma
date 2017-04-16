@@ -27,6 +27,13 @@ public class ContratoPropietaria
 		this.propietaria = propietaria;
 	}
 	
+	public ContratoPropietaria(Propietaria propietaria, int nrenovaciones) {
+		super();
+		
+		this.nrenovaciones_contrato = nrenovaciones;
+		this.propietaria = propietaria;
+	}
+	
 		
 	public ContratoPropietaria(int ncontrato_propietaria,
 			LocalDate fecha_de_contrato,
@@ -39,6 +46,17 @@ public class ContratoPropietaria
 		this.nrenovaciones_contrato = nrenovaciones_contrato;
 		this.propietaria = propietaria;
 		this.lista_articulos = lista_articulos;
+	}
+
+
+	public ContratoPropietaria(int ncontrato_propietaria, Propietaria propietaria, int nrenovaciones_contrato,
+			LocalDate fecha_de_contrato, LocalDate fecha_fin_de_contrato) {
+		super();
+		this.ncontrato_propietaria = ncontrato_propietaria;
+		this.fecha_de_contrato = fecha_de_contrato;
+		this.fecha_fin_de_contrato = fecha_fin_de_contrato;
+		this.nrenovaciones_contrato = nrenovaciones_contrato;
+		this.propietaria = propietaria;
 	}
 
 
