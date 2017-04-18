@@ -72,6 +72,13 @@ public class Articulo
 
 
 
+	public Articulo(int nref_articulo) {
+		this.nref_articulo = nref_articulo;
+	}
+
+
+
+
 	public int getNref_articulo() {
 		return nref_articulo;
 	}

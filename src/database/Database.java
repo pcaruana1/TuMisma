@@ -395,7 +395,7 @@ public class Database {
 				}
 			rs.close();
 			statement.close();
-			c.close();
+			
 				}catch (Exception e)
 				{System.out.println(e.getMessage());}
 		return lista_propietarias;
@@ -426,7 +426,7 @@ public class Database {
 			}
 			rs.close();
 			statement.close();
-			c.close();
+			
 				}catch (Exception e)
 				{System.out.println(e.getMessage());}
 		
@@ -463,7 +463,7 @@ public class Database {
 			}
 			rs.close();
 			statement.close();
-			c.close();
+			
 				}catch (Exception e)
 				{System.out.println(e.getMessage());}
 		
@@ -471,16 +471,15 @@ public class Database {
 			}
 	
 	
-	/**MEJOR HACER UN JOIN*/
+	
 	public  List<ContratoPropietariaArticulo> buscarContratoArticulo(ContratoPropietaria co)
 	{
 		List<ContratoPropietariaArticulo> lista_contratos = new ArrayList<>();
 		
 		try{
-			
 					
 			String solicitud = "SELECT * FROM contrato_articulo WHERE ncontrato_propietaria="
-			+"'"+co.getNcontrato_propietaria()+"'";
+			+co.getNcontrato_propietaria();
 			
 			Statement statement = c.createStatement();
 			
@@ -488,18 +487,16 @@ public class Database {
 
 			while(rs.next()){
 				int nref_articulo = rs.getInt("nref_articulo");
-				int ncontrato_propietaria = rs.getInt("ncontrato_propietaria");
 				int precio_tasacion = rs.getInt("precio_tasacion");
 				int precio_alquiler = rs.getInt("precio_alquiler");
 				
-//				Articulo a = new Articulo(nref_articulo);
-//				ContratoPropietariaArticulo contrato = new ContratoPropietariaArticulo(a, 
-//				lista_contratos.add(contrato);
-//				System.out.println(lista_contratos.isEmpty());
+		
+				ContratoPropietariaArticulo contrato = new ContratoPropietariaArticulo(new Articulo(nref_articulo),	co, precio_tasacion, precio_alquiler);
+				lista_contratos.add(contrato);
 			}
 			rs.close();
 			statement.close();
-			c.close();
+			
 				}catch (Exception e)
 				{System.out.println(e.getMessage());}
 		
@@ -530,11 +527,11 @@ public class Database {
 				
 				ContratoPropietaria contrato = new ContratoPropietaria(ncontrato, propietaria, n_renovaciones, fecha_fin_contrato, fecha_contrato);
 				lista_contratos.add(contrato);
-				System.out.println(lista_contratos.isEmpty());
+				
 			}
 			rs.close();
 			statement.close();
-			c.close();
+			
 				}catch (Exception e)
 				{System.out.println(e.getMessage());}
 		
@@ -581,7 +578,7 @@ public class Database {
 				}
 			rs.close();
 			statement.close();
-			c.close();
+			
 			
 			}catch (Exception e)
 				{System.out.println(e.getMessage());}
@@ -589,28 +586,36 @@ public class Database {
 			}
 	
 	
-	
-	
-//	public static void updatePropietaria(Propietaria propietaria){
-//		try{
-//			
-//			
-//		Statement stmt = c.createStatement();
-//		String sql = "UPDATE propietaria SET DNI_propietaria=" + propietaria.getDNI_propietaria() + " WHERE u_id = " + propietaria.getId_propietaria() +";";
-//		stmt.executeUpdate(sql);
-//		System.out.println("Update finished.");
-//		
-//		stmt.close();
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
-//	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//	Propietaria p = new Propietaria(3, "53995653W","m", "m", "m",28222, 2,"m","m" );
-//	List<ContratoPropietaria> rs = buscarContrato(p);
-//	System.out.println(rs.isEmpty());
+	/**ACTUALIZA PERO NO SE GUARDA*/
+	public void updatePropietaria(Propietaria propietaria){
+		try{						
 		
+		String sql = "UPDATE propietaria SET DNI_propietaria = ?, nombre_propietaria = ?, "
+			    		+ "apellidos_propietaria = ?, domicilio_propietaria = ?,"
+			    		+ "codigopostal_propietaria = ?, telefono_propietaria = ?,"
+			    		+ " email_propietaria = ?,ncuenta_propietaria = ? "
+			    		+ " WHERE id_propietaria = ?";
+		System.out.println(propietaria.getApellidos_propietaria());
+		PreparedStatement update = c.prepareStatement(sql);
+
+		update.setString(1, propietaria.getDNI_propietaria());
+		update.setString(2, propietaria.getNombre_propietaria());
+		update.setString(3, propietaria.getApellidos_propietaria());
+		update.setString(4, propietaria.getDomicilio_propietaria());
+		update.setInt(5, propietaria.getCodigopostal_propietaria());
+		update.setInt(6, propietaria.getTelefono_propietaria());
+		update.setString(7, propietaria.getEmail_propietaria());
+		update.setString(8, propietaria.getNcuenta_propietaria());
+		update.setInt(3, propietaria.getId_propietaria());
+
+
+		update.executeUpdate();
+		System.out.println("Update finished.");
+		
+		update.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
+	
 }

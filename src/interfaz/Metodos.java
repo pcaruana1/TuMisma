@@ -217,13 +217,13 @@ public class Metodos {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Database db = new Database();
-				db.connection();
-				db.deletePropietaria(propietaria);
-				db.disconnection();
 				m.crearPropietaria();
-				//Database.insertarPropietaria(m.propietaria);
-				/**MODIFICAR ESOS DATOS*/
+				
+				Database db = new Database();
+				
+				db.connection();
+				db.updatePropietaria(m.propietaria);
+				db.disconnection();
 			}
 		});
 	
@@ -316,6 +316,8 @@ public class Metodos {
 			List<ContratoPropietaria> lista_contratos = db.mostrarContratosPropietarias();
 			
 			Iterator<ContratoPropietaria> rs = lista_contratos.iterator();
+			
+			List<ContratoPropietariaArticulo> lista_contratos_articulo = new ArrayList<>();
 		
 			
 			StringBuilder str = new StringBuilder();	
@@ -327,7 +329,19 @@ public class Metodos {
 							ContratoPropietaria contrato = rs.next();
 						    str.append("nº contrato: " + contrato.getNcontrato_propietaria());
 						    str.append(", nº renovaciones: " + contrato.getNrenovaciones_contrato());
-						    str.append(", id propietaria: " + contrato.getPropietaria().getId_propietaria());		 
+						    str.append(", id propietaria: " + contrato.getPropietaria().getId_propietaria());
+						    lista_contratos_articulo=db.buscarContratoArticulo(contrato);
+						    					    
+						    Iterator<ContratoPropietariaArticulo> i = lista_contratos_articulo.iterator();
+						    ContratoPropietariaArticulo contrato_articulo = new ContratoPropietariaArticulo();
+						    
+						    while(i.hasNext())
+						    {
+						    	contrato_articulo = i.next();
+						    	str.append("\nnº articulo : " + contrato_articulo.getArticulo().getNref_articulo());
+						    	str.append("\nprecio de tasacion : " +contrato_articulo.getPrecio_tasacion());
+						    	str.append("\nprecio de alquiler : " + contrato_articulo.getPrecio_alquiler());
+						    }
 						    						    				    
 					
 						    //new line
@@ -336,7 +350,8 @@ public class Metodos {
 				JOptionPane.showMessageDialog(null,str.toString());
 				db.disconnection();
 		}
-	//Buscar propietarias		
+	//Buscar propietarias	
+		/**AÑADIR MENSAJES DE BORRADO, ACTUALIZADO*/
 		public static void buscarPropietariasDNI(){	
 			/**SI NO ENCUENTRA MUESTRA UN MENSAJE DE QUE NO ENCUENTRA*/
 			
