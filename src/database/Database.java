@@ -595,7 +595,7 @@ public class Database {
 			    		+ "codigopostal_propietaria = ?, telefono_propietaria = ?,"
 			    		+ " email_propietaria = ?,ncuenta_propietaria = ? "
 			    		+ " WHERE id_propietaria = ?";
-		System.out.println(propietaria.getApellidos_propietaria());
+		
 		PreparedStatement update = c.prepareStatement(sql);
 
 		update.setString(1, propietaria.getDNI_propietaria());
@@ -606,7 +606,7 @@ public class Database {
 		update.setInt(6, propietaria.getTelefono_propietaria());
 		update.setString(7, propietaria.getEmail_propietaria());
 		update.setString(8, propietaria.getNcuenta_propietaria());
-		update.setInt(3, propietaria.getId_propietaria());
+		update.setInt(9, propietaria.getId_propietaria());
 
 
 		update.executeUpdate();

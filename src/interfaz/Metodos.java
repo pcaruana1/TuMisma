@@ -201,23 +201,27 @@ public class Metodos {
 	}
 	
 	//Mostrar datos propietaria
-	public static void mostrarPropietaria(Propietaria propietaria)
+	public static void mostrarPropietaria(Propietaria p)
 	{
+		int id = p.getId_propietaria();
 		InputPropietaria m = new InputPropietaria();
-		m.nombre.setText(propietaria.getNombre_propietaria());
-		m.apellidos.setText(propietaria.getApellidos_propietaria());
-		m.dni.setText(propietaria.getDNI_propietaria());
-        m.telefono.setText(Integer.toString(propietaria.getTelefono_propietaria()));
-		m.direccion.setText(propietaria.getDomicilio_propietaria());
-        m.cp.setText(Integer.toString(propietaria.getCodigopostal_propietaria()));
-		m.email.setText(propietaria.getEmail_propietaria());
-		m.ncuenta.setText(propietaria.getNcuenta_propietaria());
+		
+		m.nombre.setText(p.getNombre_propietaria());
+		m.apellidos.setText(p.getApellidos_propietaria());
+		m.dni.setText(p.getDNI_propietaria());
+        m.telefono.setText(Integer.toString(p.getTelefono_propietaria()));
+		m.direccion.setText(p.getDomicilio_propietaria());
+        m.cp.setText(Integer.toString(p.getCodigopostal_propietaria()));
+		m.email.setText(p.getEmail_propietaria());
+		m.ncuenta.setText(p.getNcuenta_propietaria());
 		JButton btnNewButton = new JButton("Guardar");
 		m.buttonPane.add(btnNewButton);
+		
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				m.crearPropietaria();
+				m.propietaria.setId_propietaria(id);
 				
 				Database db = new Database();
 				
@@ -350,6 +354,7 @@ public class Metodos {
 				JOptionPane.showMessageDialog(null,str.toString());
 				db.disconnection();
 		}
+		
 	//Buscar propietarias	
 		/**AÑADIR MENSAJES DE BORRADO, ACTUALIZADO*/
 		public static void buscarPropietariasDNI(){	
@@ -425,6 +430,7 @@ public class Metodos {
 			    if(respuesta == 0 )
 			    {
 			    	//modificar
+			    	
 			    	mostrarPropietaria(propietaria);
 					
 			    }
