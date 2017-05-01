@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_121"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_131"/>
 	<classpathentry kind="lib" path="C:/Users/Patty/Desktop/CUARTO/SEGUNDO CUATRI/TGI/jcalendar-1.4/lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Patty/Desktop/CUARTO/SEGUNDO CUATRI/TGI/jcalendar-1.4/lib/jgoodies-common-1.2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Patty/Desktop/CUARTO/SEGUNDO CUATRI/TGI/jcalendar-1.4/lib/jgoodies-looks-2.4.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Patty/Desktop/CUARTO/SEGUNDO CUATRI/TGI/jcalendar-1.4/lib/junit-4.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Patty/Desktop/CUARTO/SEGUNDO CUATRI/TGI/sqlite-jdbc-3.16.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Patty/Desktop/CUARTO/SEGUNDO CUATRI/TGI/JPA-DEMO/lib/eclipselink-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Patty/Desktop/CUARTO/SEGUNDO CUATRI/TGI/JPA-DEMO/lib/javax.persistence_2.1.1.v201509150925.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

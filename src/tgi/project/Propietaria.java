@@ -1,17 +1,40 @@
 package tgi.project;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+
 
 /**
  * Write a description of class Propietaria here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Patricia Caruana 
+ * @version 01/05/2017
  */
-public class Propietaria
+@Entity
+@Table
+public class Propietaria implements Serializable
 {
-    // instance variables - replace the example below with your own
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7721015232004528879L;
+	
+	@Id
+	@GeneratedValue(generator="id")
+	@TableGenerator(name="Propietaria", table="sqlite_sequence",
+	    pkColumnName="name", valueColumnName="seq", pkColumnValue="departments")
+	private Integer id;
+	private String name;
+	private String address;
     private int id_propietaria;
     private String DNI_propietaria;
     private String nombre_propietaria;
@@ -22,7 +45,9 @@ public class Propietaria
     private String email_propietaria;
     private LocalDate fecha_de_nacimiento_propietaria;
     private String ncuenta_propietaria;
+	@OneToMany(mappedBy="id")
     private ArrayList<ContratoPropietaria> lista_contratos = new ArrayList<ContratoPropietaria>();
+	@OneToMany(mappedBy="id")
     private ArrayList<PagosPropietaria> lista_pagos= new ArrayList<PagosPropietaria>();
 
     /**
@@ -66,7 +91,32 @@ public class Propietaria
 		this.ncuenta_propietaria = ncuenta_propietaria;
 	}
 
+	// Hashcode uses primary keys, since they are unique
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((id == null) ? 0 : id.hashCode());
+			return result;
+		}
 
+		// Equals uses primary keys, since they are unique
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Propietaria other = (Propietaria) obj;
+			if (id == null) {
+				if (other.id != null)
+					return false;
+			} else if (!id.equals(other.id))
+				return false;
+			return true;
+		}
 
 	public Propietaria(int id_propietaria) {
 		super();
