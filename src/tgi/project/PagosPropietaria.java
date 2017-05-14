@@ -4,26 +4,50 @@ package tgi.project;
 /**
  * Write a description of class PagosPropietaria here.
  * 
- * @author Patricia Caruana 
- * @version 04/04/2017
+ * @author 
+ * @version 
  */
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-public class PagosPropietaria
-{
-    // instance variables - replace the example below with your own
-    private int id_pago;
-    private int id_propietaria;
-    private int dinero;
-    private int forma_pago;
-    private LocalDate fecha_pago;
-    private boolean pagado;
-    private ArrayList<Alquilar> lista_alquileres = new ArrayList<Alquilar>();
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+
+//ROOT ELEMENT QUE GENERE LOS PAGOS. LA PROPIETARIA EXISTE SI O SI
+@Entity
+@Table(name = "pagosPropietaria")
+public class PagosPropietaria implements Serializable {
+
+	private static final long serialVersionUID = -6954563533640681418L;
+
+	@Id
+	@GeneratedValue(generator = "pagosPropietaria")
+	@TableGenerator(name = "pagosPropietaria", table = "sqlite_sequence",
+		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "pagosPropietaria")
+	
+    private int id_pago;	//AT
+    private int id_propietaria;		//AT
+    private int dinero;		//EL	
+    private int forma_pago;	//AT
+    private LocalDate fecha_pago;	//EL
+    private boolean pagado;		//AT
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_propietaria")
+    private Propietaria propietaria;
+	@OneToMany(mappedBy="pago")
+    private ArrayList<Alquilar> lista_alquileres = new ArrayList<Alquilar>();	//TR
+    
     
     /**
      * Constructor for objects of class PagosPropietaria
      */
-    
 
 	public PagosPropietaria(int id_pago, int id_propietaria, int dinero,
 			int forma_pago, LocalDate fecha_pago, boolean pagado) {
@@ -48,8 +72,46 @@ public class PagosPropietaria
 		this.pagado = pagado;
 		this.lista_alquileres = lista_alquileres;
 	}
+	
+    /**
+     * Constructor sin parametros
+     */  
+    public PagosPropietaria() {
+		super();
+    }
 
 
+    /* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id_pago;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof PagosPropietaria)) {
+			return false;
+		}
+		PagosPropietaria other = (PagosPropietaria) obj;
+		if (id_pago != other.id_pago) {
+			return false;
+		}
+		return true;
+	}
 
 	public int getId_pago() {
 		return id_pago;

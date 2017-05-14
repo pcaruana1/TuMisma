@@ -3,23 +3,47 @@ package tgi.project;
 /**
  * Contrato entre la propietaria del articulo y la tienda
  * 
- * @author Patricia Caruana 
- * @version 04/04/2017
+ * @author 
+ * @version 
  */
+import java.io.Serializable;
 import java.time.LocalDate; 
 import java.util.ArrayList;
-public class ContratoPropietaria
-{
-    // instance variables - replace the example below with your own
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+
+@Entity
+@Table(name = "contratoPropietaria")
+public class ContratoPropietaria implements Serializable {
+
+	private static final long serialVersionUID = -7839249403410865448L;
+
+	@Id
+	@GeneratedValue(generator = "contratoPropietaria")
+	@TableGenerator(name = "contratoPropietaria", table = "sqlite_sequence",
+		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "contratoPropietaria")
+	
     private int ncontrato_propietaria;
     private LocalDate fecha_de_contrato;
     private LocalDate fecha_fin_de_contrato;
     private int nrenovaciones_contrato;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_propietaria")
     private Propietaria propietaria;
+	@OneToMany(mappedBy="contrato")
     private ArrayList<ContratoPropietariaArticulo> lista_articulos = new ArrayList<>();
+    
     /**
      * Constructor for objects of class Contrato
      */   
+    
 	public ContratoPropietaria(int ncontrato_propietaria,Propietaria propietaria, int nrenovaciones) {
 		super();
 		this.ncontrato_propietaria = ncontrato_propietaria;
@@ -58,11 +82,45 @@ public class ContratoPropietaria
 		this.nrenovaciones_contrato = nrenovaciones_contrato;
 		this.propietaria = propietaria;
 	}
+	
+    /**
+     * Constructor sin parametros
+     */  
+    public ContratoPropietaria() {
+		super();
+    }
 
+    /* (non-Javadoc)
+ 	 * @see java.lang.Object#hashCode()
+ 	 */
+ 	@Override
+ 	public int hashCode() {
+ 		final int prime = 31;
+ 		int result = 1;
+ 		result = prime * result + ncontrato_propietaria;
+ 		return result;
+ 	}
 
-	public ContratoPropietaria() {
-		// TODO Auto-generated constructor stub
-	}
+ 	/* (non-Javadoc)
+ 	 * @see java.lang.Object#equals(java.lang.Object)
+ 	 */
+ 	@Override
+ 	public boolean equals(Object obj) {
+ 		if (this == obj) {
+ 			return true;
+ 		}
+ 		if (obj == null) {
+ 			return false;
+ 		}
+ 		if (!(obj instanceof ContratoPropietaria)) {
+ 			return false;
+ 		}
+ 		ContratoPropietaria other = (ContratoPropietaria) obj;
+ 		if (ncontrato_propietaria != other.ncontrato_propietaria) {
+ 			return false;
+ 		}
+ 		return true;
+ 	}
 
 
 	public int getNcontrato_propietaria() {

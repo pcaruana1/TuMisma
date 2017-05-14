@@ -3,8 +3,6 @@ package tgi.project;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,42 +10,37 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-
 /**
  * Write a description of class Propietaria here.
  * 
- * @author Patricia Caruana 
- * @version 01/05/2017
+ * @author (your name) 
+ * @version (a version number or a date)
  */
+
 @Entity
-@Table
-public class Propietaria implements Serializable
-{
-    /**
-	 * 
-	 */
+@Table(name = "propietaria")
+public class Propietaria implements Serializable {
+
 	private static final long serialVersionUID = 7721015232004528879L;
-	
+
 	@Id
-	@GeneratedValue(generator="id")
-	@TableGenerator(name="Propietaria", table="sqlite_sequence",
-	    pkColumnName="name", valueColumnName="seq", pkColumnValue="departments")
-	private Integer id;
-	private String name;
-	private String address;
-    private int id_propietaria;
-    private String DNI_propietaria;
-    private String nombre_propietaria;
-    private String apellidos_propietaria;
-    private String domicilio_propietaria;
-    private int codigopostal_propietaria ;
-    private int telefono_propietaria;
-    private String email_propietaria;
-    private LocalDate fecha_de_nacimiento_propietaria;
-    private String ncuenta_propietaria;
-	@OneToMany(mappedBy="id")
-    private ArrayList<ContratoPropietaria> lista_contratos = new ArrayList<ContratoPropietaria>();
-	@OneToMany(mappedBy="id")
+	@GeneratedValue(generator = "propietaria")
+	@TableGenerator(name = "propietaria", table = "sqlite_sequence",
+		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "propietaria")
+	
+    private int id_propietaria;	//AT
+    private String DNI_propietaria;	//AT
+    private String nombre_propietaria;	//EL
+    private String apellidos_propietaria;	//EL
+    private String domicilio_propietaria;	//TR
+    private int codigopostal_propietaria ;	//TR
+    private int telefono_propietaria;		//TR
+    private String email_propietaria;		//EL
+    private LocalDate fecha_de_nacimiento_propietaria;	//TR
+    private String ncuenta_propietaria;		//EL
+	@OneToMany(mappedBy="propietaria")
+    private ArrayList<ContratoPropietaria> lista_contratos = new ArrayList<ContratoPropietaria>();	//TR
+	@OneToMany(mappedBy="propietaria")
     private ArrayList<PagosPropietaria> lista_pagos= new ArrayList<PagosPropietaria>();
 
     /**
@@ -91,42 +84,52 @@ public class Propietaria implements Serializable
 		this.ncuenta_propietaria = ncuenta_propietaria;
 	}
 
-	// Hashcode uses primary keys, since they are unique
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((id == null) ? 0 : id.hashCode());
-			return result;
-		}
-
-		// Equals uses primary keys, since they are unique
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Propietaria other = (Propietaria) obj;
-			if (id == null) {
-				if (other.id != null)
-					return false;
-			} else if (!id.equals(other.id))
-				return false;
-			return true;
-		}
-
 	public Propietaria(int id_propietaria) {
 		super();
 		this.id_propietaria = id_propietaria;
 	}
 
-	public Propietaria() {
-		// TODO Auto-generated constructor stub
+    /**
+     * Constructor sin parametros
+     */  
+    public Propietaria() {
+		super();
+    }
+
+
+    /* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id_propietaria;
+		return result;
 	}
 
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Propietaria)) {
+			return false;
+		}
+		Propietaria other = (Propietaria) obj;
+		if (id_propietaria != other.id_propietaria) {
+			return false;
+		}
+		return true;
+	}
+	
 	public int getId_propietaria() {
 		return id_propietaria;
 	}
