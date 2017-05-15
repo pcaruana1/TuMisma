@@ -9,6 +9,8 @@
 	<persistence-unit name="company-provider" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		
+		<!-- Converters -->
+        <class>tgi.project.LocalDateAttributeConverter</class>
  
 		<!-- Entity Class -->
 		<class>tgi.project.Propietaria</class>
@@ -26,7 +28,7 @@
 		<properties>	
 			<!-- Connection properties -->
 			<property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
-		    <property name="javax.persistence.jdbc.url"	value="jdbc:sqlite:./tienda.db" />
+		    <property name="javax.persistence.jdbc.url"	value="jdbc:sqlite:./db/tienda.db" />
 			<!-- Fill if we need user and password -->
 			<property name="javax.persistence.jdbc.user" value="" />
 			<property name="javax.persistence.jdbc.password" value="" />

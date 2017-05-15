@@ -15,10 +15,11 @@ public class JPAUpdate {
 	// Put entity manager here so it can be used in several methods
 	private static EntityManager em;
 	
-	private static void printDepartments() {
-		Query q1 = em.createNativeQuery("SELECT * FROM Propietaria", Propietaria.class);
-		List<Propietaria> lista_propietarias = (List<Propietaria>) q1.getResultList();
-		// Print the departments
+	private static void printPropietarias() {
+		Query q1 = em.createNativeQuery("SELECT * FROM propietaria", Propietaria.class);
+		List<Propietaria> resultList = (List<Propietaria>) q1.getResultList();
+		List<Propietaria> lista_propietarias = resultList;
+		// Print propietarias
 		for (Propietaria propietaria : lista_propietarias) {
 			System.out.println(propietaria);
 		}
@@ -32,16 +33,15 @@ public class JPAUpdate {
 		em.createNativeQuery("PRAGMA foreign_keys=ON").executeUpdate();
 		em.getTransaction().commit();
 
-		// Get the new department's location from the command prompt
-		System.out.println("Company's departments:");
-		printDepartments();
-		System.out.print("Choose a department to change its location. Type it's ID:");
+		System.out.println("Lista de propietarias:");
+		printPropietarias();
+		System.out.print("Introduzca el ID de la propietaria que desea modificar:");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		int id_propietaria = Integer.parseInt(reader.readLine());
-		Query q2 = em.createNativeQuery("SELECT * FROM Propietaria WHERE id_propietaria = ?", Propietaria.class);
+		Query q2 = em.createNativeQuery("SELECT * FROM propietaria WHERE id_propietaria = ?", Propietaria.class);
 		q2.setParameter(1, id_propietaria);
 		Propietaria propietaria = (Propietaria) q2.getSingleResult();
-		System.out.print("Type it's new location:");
+		System.out.print("Introduzca su nueva direccion:");
 		String direccion = reader.readLine();
 		
 		// Begin transaction

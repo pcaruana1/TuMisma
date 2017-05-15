@@ -15,7 +15,7 @@ import javax.persistence.Query;
 
 import tgi.project.Propietaria;
 import tgi.project.ContratoPropietaria;
-import tgi.project.LocalDateAttributeConverter;
+
 
 
 public class JPAUpdateRelated {
@@ -27,10 +27,10 @@ public class JPAUpdateRelated {
 	// Used for parsing dates
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-	private static void printContratos() {
-		Query q1 = em.createNativeQuery("SELECT * FROM contrato_propietaria", ContratoPropietaria.class);
-		@SuppressWarnings("unchecked")
-		List<ContratoPropietaria> lista_contratos = (List<ContratoPropietaria>) q1.getResultList();
+	private static void printContratosPropietaria() {
+		Query query_contrato = em.createNativeQuery("SELECT ncontrato_propietaria, id_propietaria, nrenovaciones_contrato FROM contrato_propietaria", ContratoPropietaria.class);
+
+		List<ContratoPropietaria> lista_contratos = (List<ContratoPropietaria>) query_contrato.getResultList();
 		// Print the departments
 		for (ContratoPropietaria contrato : lista_contratos) {
 			System.out.println(contrato);
@@ -83,15 +83,16 @@ public class JPAUpdateRelated {
 
 		
 		// Choose his new contract
-		printContratos();
+		printContratosPropietaria();
 		
 
 		// Create a propietaria
-		Propietaria propietaria = createPropietaria();
+		//Propietaria propietaria = createPropietaria();
+		Propietaria propietaria = new Propietaria(1);
 		System.out.print("Elige un contrato:");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		int ncontrato_propietaria = Integer.parseInt(reader.readLine());
-		Query q2 = em.createNativeQuery("SELECT * FROM contrato_propietaria WHERE ncontrato_propietaria = ?", Propietaria.class);
+		Query q2 = em.createNativeQuery("SELECT * FROM contrato_propietaria WHERE ncontrato_propietaria = ?", ContratoPropietaria.class);
 		q2.setParameter(1, ncontrato_propietaria);
 		ContratoPropietaria contrato = (ContratoPropietaria) q2.getSingleResult();
 
