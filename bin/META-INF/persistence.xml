@@ -8,17 +8,25 @@
 	<!-- JTA: Container-managed transactions -->
 	<persistence-unit name="company-provider" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		
  
 		<!-- Entity Class -->
 		<class>tgi.project.Propietaria</class>
 		<class>tgi.project.ContratoPropietaria</class>
 		<class>tgi.project.ContratoPropietariaArticulo</class>
 		<class>tgi.project.Articulo</class>
+		<class>tgi.project.Alquilar</class>
+		<class>tgi.project.ClientaAlquiler</class>
+		<class>tgi.project.CompraArticuloProveedor</class>
+		<class>tgi.project.CompraClienta</class>
+		<class>tgi.project.ComprasProveedor</class>
+		<class>tgi.project.PagosPropietaria</class>
+		<class>tgi.project.Proveedor</class>
  
 		<properties>	
 			<!-- Connection properties -->
 			<property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
-		    <property name="javax.persistence.jdbc.url"	value="jdbc:sqlite:./db/tienda.db" />
+		    <property name="javax.persistence.jdbc.url"	value="jdbc:sqlite:./tienda.db" />
 			<!-- Fill if we need user and password -->
 			<property name="javax.persistence.jdbc.user" value="" />
 			<property name="javax.persistence.jdbc.password" value="" />

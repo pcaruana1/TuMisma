@@ -10,6 +10,8 @@ package tgi.project;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,8 +39,8 @@ public class ComprasProveedor implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
-	@OneToMany(mappedBy="nref_tienda_proveedor")
-    private ArrayList<CompraArticuloProveedor> lista_compra_art_proveedor;
+	@OneToMany(mappedBy="ticket_compra")
+    private List<CompraArticuloProveedor> lista_compra_art_proveedor = new ArrayList<CompraArticuloProveedor>();
 	
 	/**
 	 * @return the proveedor
@@ -61,7 +63,7 @@ public class ComprasProveedor implements Serializable {
 	/**
 	 * @return the lista_compra_art_proveedor
 	 */
-	public ArrayList<CompraArticuloProveedor> getLista_compra_art_proveedor() {
+	public List<CompraArticuloProveedor> getLista_compra_art_proveedor() {
 	
 		return lista_compra_art_proveedor;
 	}
@@ -77,27 +79,6 @@ public class ComprasProveedor implements Serializable {
 	}
 
 	
-	/**
-	 * @return the lista_art_comprados
-	 */
-	public ArrayList<Articulo> getLista_art_comprados() {
-	
-		return lista_art_comprados;
-	}
-
-	
-	/**
-	 * @param lista_art_comprados the lista_art_comprados to set
-	 */
-	public void setLista_art_comprados(ArrayList<Articulo> lista_art_comprados) {
-	
-		this.lista_art_comprados = lista_art_comprados;
-	}
-
-	@OneToMany(mappedBy="compra_proveedor")
-    private ArrayList<Articulo> lista_art_comprados;
-	
-    
     /**
      * Constructor for objects of class ComprasProveedor
      */
@@ -113,12 +94,12 @@ public class ComprasProveedor implements Serializable {
     
 	public ComprasProveedor(int id_ticket, int id_proveedor, int precio_final,
 			LocalDate fecha_compra,
-			ArrayList<Articulo> lista_art_comprados, Proveedor proveedor) {
+			List<CompraArticuloProveedor> lista_art_comprados, Proveedor proveedor) {
 		super();
 		this.id_ticket = id_ticket;		
 		this.precio_final = precio_final;
 		this.fecha_compra = fecha_compra;
-		this.lista_art_comprados = lista_art_comprados;
+		this.lista_compra_art_proveedor = lista_art_comprados;
 		this.proveedor = proveedor;
 	}
 	

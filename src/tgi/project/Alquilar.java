@@ -32,7 +32,6 @@ public class Alquilar implements Serializable {
 		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "alquilar")
 	
 	private int id_alquiler;
-    private int nref_articulo;
     private LocalDate fecha_recogida;
     private LocalDate fecha_devolucion;
     private int seguro;
@@ -42,7 +41,7 @@ public class Alquilar implements Serializable {
     private PagosPropietaria pago;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "nref_articulo")
-    private Articulo articulos_alquilar;
+    private Articulo articulo;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_clienta_alquiler")
     private ClientaAlquiler clienta;
@@ -114,11 +113,11 @@ public class Alquilar implements Serializable {
 
 	
 	public int getNref_articulo() {
-		return nref_articulo;
+		return articulo.getNref_articulo();
 	}
 
 	public void setNref_articulo(int nref_articulo) {
-		this.nref_articulo = nref_articulo;
+		this.articulo.getNref_articulo();
 	}
 
 	

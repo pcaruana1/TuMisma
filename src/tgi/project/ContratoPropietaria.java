@@ -9,6 +9,8 @@ package tgi.project;
 import java.io.Serializable;
 import java.time.LocalDate; 
 import java.util.ArrayList;
+
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,6 +20,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+
 
 @Entity
 @Table(name = "contratoPropietaria")
@@ -31,13 +36,15 @@ public class ContratoPropietaria implements Serializable {
 		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "contratoPropietaria")
 	
     private int ncontrato_propietaria;
+	@Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate fecha_de_contrato;
+	@Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate fecha_fin_de_contrato;
     private int nrenovaciones_contrato;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_propietaria")
     private Propietaria propietaria;
-	@OneToMany(mappedBy="contrato")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="contrato")
     private ArrayList<ContratoPropietariaArticulo> lista_articulos = new ArrayList<>();
     
     /**

@@ -3,7 +3,9 @@ package tgi.project;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -38,15 +40,29 @@ public class Propietaria implements Serializable {
     private String email_propietaria;		//EL
     private LocalDate fecha_de_nacimiento_propietaria;	//TR
     private String ncuenta_propietaria;		//EL
-	@OneToMany(mappedBy="propietaria")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="propietaria")
     private ArrayList<ContratoPropietaria> lista_contratos = new ArrayList<ContratoPropietaria>();	//TR
-	@OneToMany(mappedBy="propietaria")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="propietaria")
     private ArrayList<PagosPropietaria> lista_pagos= new ArrayList<PagosPropietaria>();
 
     /**
      * Constructor for objects of class Propietaria
      */
-   
+	public Propietaria(String dNI_propietaria,
+			String nombre_propietaria, String apellidos_propietaria,
+			String domicilio_propietaria, int cp, int telefono,
+			String email_propietaria,
+			String ncuenta_propietaria) {
+		this.id_propietaria = 0;
+		this.DNI_propietaria = dNI_propietaria;
+		this.nombre_propietaria = nombre_propietaria;
+		this.apellidos_propietaria = apellidos_propietaria;
+		this.domicilio_propietaria = domicilio_propietaria;
+		this.codigopostal_propietaria  = cp;
+		this.telefono_propietaria = telefono;
+		this.email_propietaria = email_propietaria;
+		this.ncuenta_propietaria = ncuenta_propietaria;
+	}
 	public Propietaria(String dNI_propietaria,
 			String nombre_propietaria, String apellidos_propietaria,
 			String domicilio_propietaria, int cp, int telefono_propietaria,

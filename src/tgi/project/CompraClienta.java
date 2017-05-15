@@ -28,7 +28,7 @@ public class CompraClienta implements Serializable {
 	private int id_compra;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "nref_articulo")
-    private Articulo articulos_compra;
+    private Articulo articulo;
     private LocalDate fecha_venta;
 
     /**

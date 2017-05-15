@@ -10,6 +10,8 @@ package tgi.project;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,7 +35,6 @@ public class PagosPropietaria implements Serializable {
 		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "pagosPropietaria")
 	
     private int id_pago;	//AT
-    private int id_propietaria;		//AT
     private int dinero;		//EL	
     private int forma_pago;	//AT
     private LocalDate fecha_pago;	//EL
@@ -42,7 +43,7 @@ public class PagosPropietaria implements Serializable {
 	@JoinColumn(name = "id_propietaria")
     private Propietaria propietaria;
 	@OneToMany(mappedBy="pago")
-    private ArrayList<Alquilar> lista_alquileres = new ArrayList<Alquilar>();	//TR
+    private List<Alquilar> lista_alquileres = new ArrayList<Alquilar>();	//TR
     
     
     /**
@@ -52,7 +53,7 @@ public class PagosPropietaria implements Serializable {
 	public PagosPropietaria(int id_pago, int id_propietaria, int dinero,
 			int forma_pago, LocalDate fecha_pago, boolean pagado) {
 		this.id_pago = id_pago;
-		this.id_propietaria = id_propietaria;
+		this.propietaria.setId_propietaria(id_propietaria); 
 		this.dinero = dinero;
 		this.forma_pago = forma_pago;
 		this.fecha_pago = fecha_pago;
@@ -65,7 +66,7 @@ public class PagosPropietaria implements Serializable {
 			ArrayList<Alquilar> lista_alquileres) {
 		super();
 		this.id_pago = id_pago;
-		this.id_propietaria = id_propietaria;
+		this.propietaria.setId_propietaria(id_propietaria); 
 		this.dinero = dinero;
 		this.forma_pago = forma_pago;
 		this.fecha_pago = fecha_pago;
@@ -122,11 +123,11 @@ public class PagosPropietaria implements Serializable {
 	}
 
 	public int getId_propietaria() {
-		return id_propietaria;
+		return this.propietaria.getId_propietaria(); 
 	}
 
 	public void setId_propietaria(int id_propietaria) {
-		this.id_propietaria = id_propietaria;
+		this.propietaria.setId_propietaria(id_propietaria); 
 	}
 
 	public int getDinero() {

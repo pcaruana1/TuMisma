@@ -10,6 +10,8 @@ package tgi.project;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -40,7 +42,7 @@ public class ClientaAlquiler implements Serializable {
     private int descuento_clienta_alquiler;
     private LocalDate fecha_de_nacimiento_clienta_alquiler;
 	@OneToMany(mappedBy="clienta")
-    private ArrayList<Alquilar> lista_alquileres= new ArrayList<Alquilar>();
+    private List<Alquilar> lista_alquileres= new ArrayList<Alquilar>();
 
     /**
      * Constructor for objects of class ClientaAlquiler

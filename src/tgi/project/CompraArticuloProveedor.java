@@ -13,7 +13,9 @@ import javax.persistence.TableGenerator;
 
 
 /**
- * Write a description of class ComprasProveedorArticulo here.
+ * Esta clase tiene clave compuesta
+ * 1) CompraProveedor (id_ticket)
+ * 2) Articulo (n_ref)
  * 
  * @author
  * @version 
@@ -29,12 +31,11 @@ public class CompraArticuloProveedor implements Serializable {
 	@GeneratedValue(generator = "compraArticuloProveedor")
 	@TableGenerator(name = "compraArticuloProveedor", table = "sqlite_sequence",
 		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "compraArticuloProveedor")
-	
-	private int id_ticket;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_ticket")
-    private ComprasProveedor nref_tienda_proveedor;
+    private ComprasProveedor ticket_compra;
     private int precio_unidad;
+    @Id
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "nref_articulo")
     private Articulo articulo;
@@ -85,11 +86,10 @@ public class CompraArticuloProveedor implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id_ticket;
+		result = prime * result + ticket_compra.getId_ticket();
 		result = prime
 				* result
-				+ ((nref_tienda_proveedor == null) ? 0 : nref_tienda_proveedor
-						.hashCode());
+				+ ((ticket_compra == null) ? 0 : ticket_compra.hashCode());
 		return result;
 	}
 
@@ -108,14 +108,14 @@ public class CompraArticuloProveedor implements Serializable {
 			return false;
 		}
 		CompraArticuloProveedor other = (CompraArticuloProveedor) obj;
-		if (id_ticket != other.id_ticket) {
+		if (ticket_compra != other.ticket_compra) {
 			return false;
 		}
-		if (nref_tienda_proveedor == null) {
-			if (other.nref_tienda_proveedor != null) {
+		if (ticket_compra == null) {
+			if (other.ticket_compra != null) {
 				return false;
 			}
-		} else if (!nref_tienda_proveedor.equals(other.nref_tienda_proveedor)) {
+		} else if (!ticket_compra.equals(other.ticket_compra)) {
 			return false;
 		}
 		return true;
@@ -123,11 +123,11 @@ public class CompraArticuloProveedor implements Serializable {
 	
 
 	public int getId_ticket() {
-		return id_ticket;
+		return ticket_compra.getId_ticket();
 	}
 
-	public void setId_ticket(int id_ticket) {
-		this.id_ticket = id_ticket;
+	public void setId_ticket(int ticket_compra) {
+		this.ticket_compra.setId_ticket(ticket_compra); 
 	}
 
 	public int getPrecio_unidad() {
@@ -144,7 +144,7 @@ public class CompraArticuloProveedor implements Serializable {
 	 */
 	public ComprasProveedor getNref_tienda_proveedor() {
 	
-		return nref_tienda_proveedor;
+		return ticket_compra;
 	}
 
 	
@@ -153,7 +153,7 @@ public class CompraArticuloProveedor implements Serializable {
 	 */
 	public void setNref_tienda_proveedor(ComprasProveedor nref_tienda_proveedor) {
 	
-		this.nref_tienda_proveedor = nref_tienda_proveedor;
+		this.ticket_compra = nref_tienda_proveedor;
 	}
 	
    

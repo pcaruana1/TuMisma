@@ -15,6 +15,7 @@ import javax.persistence.Query;
 
 import tgi.project.Propietaria;
 import tgi.project.ContratoPropietaria;
+import tgi.project.LocalDateAttributeConverter;
 
 
 public class JPAUpdateRelated {
@@ -27,43 +28,49 @@ public class JPAUpdateRelated {
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 	private static void printContratos() {
-		Query q1 = em.createNativeQuery("SELECT * FROM Propietaria", Propietaria.class);
-		List<Propietaria> lista_propietarias = (List<Propietaria>) q1.getResultList();
+		Query q1 = em.createNativeQuery("SELECT * FROM contrato_propietaria", ContratoPropietaria.class);
+		@SuppressWarnings("unchecked")
+		List<ContratoPropietaria> lista_contratos = (List<ContratoPropietaria>) q1.getResultList();
 		// Print the departments
-		for (Propietaria propietaria : lista_propietarias) {
-			System.out.println(propietaria);
+		for (ContratoPropietaria contrato : lista_contratos) {
+			System.out.println(contrato);
 		}
 	}
-
+	
+	
 	private static Propietaria createPropietaria() throws Exception {
-		// Get the employee info from the command prompt
-		System.out.println("Porfavor, introduzca la información de la propietaria:");
+		// Get the department info from the command prompt
+		System.out.println("Introduzca la informacion de propietaria:");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("Nombre: ");
-		String name = reader.readLine();
-		System.out.print("Cumpleaños (aaaa-MM-dd): ");
-		String dob = reader.readLine();
-		LocalDate dobDate = LocalDate.parse(dob, formatter);
-		System.out.print("Direccion: ");
-		String address = reader.readLine();
-		System.out.print("Codigo Postal: ");
-		double salary = Double.parseDouble(reader.readLine());
+		String nombre = reader.readLine();
+		System.out.print("Apellidos: ");
+		String apellidos = reader.readLine();
 		System.out.print("DNI: ");
 		String dni = reader.readLine();
-		
-
+		System.out.print("Domicilio: ");
+		String domicilio = reader.readLine();
+		System.out.print("Codigo Postal: ");
+		String cp = reader.readLine();
+		System.out.print("Email: ");
+		String email = reader.readLine();
+		System.out.print("Nº cuenta: ");
+		String n_cuenta = reader.readLine();
+		System.out.print("Telefono: ");
+		String telefono = reader.readLine();
+					
 		// Create the object
-		Propietaria emp = new Propietaria();
+		Propietaria propietaria = new Propietaria(dni, nombre, apellidos, domicilio, Integer.parseInt(cp), Integer.parseInt(telefono), email, n_cuenta);
 		
 		// Begin transaction
 		em.getTransaction().begin();
 		// Store the object
-		em.persist(emp);
+		em.persist(propietaria);
 		// End transaction
 		em.getTransaction().commit();
 		
 		// Return the Employee
-		return emp;
+		return propietaria;
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -74,11 +81,13 @@ public class JPAUpdateRelated {
 		em.createNativeQuery("PRAGMA foreign_keys=ON").executeUpdate();
 		em.getTransaction().commit();
 
-		// Create a propietaria
-		Propietaria propietaria = createPropietaria();
 		
 		// Choose his new contract
 		printContratos();
+		
+
+		// Create a propietaria
+		Propietaria propietaria = createPropietaria();
 		System.out.print("Elige un contrato:");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		int ncontrato_propietaria = Integer.parseInt(reader.readLine());

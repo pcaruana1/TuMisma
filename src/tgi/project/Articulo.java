@@ -44,11 +44,11 @@ public class Articulo implements Serializable {
     private String comentarios;
 	@OneToOne(mappedBy="articulo")
     private ContratoPropietariaArticulo contrato_prop_art;
-	@OneToOne(mappedBy="nref_articulo")
+	@OneToOne(mappedBy="articulo")
     private CompraArticuloProveedor compra_art_proveedor;
-	@OneToOne(mappedBy="articulos_compra")
+	@OneToOne(mappedBy="articulo")
 	private CompraClienta compra;
-	@OneToMany(mappedBy="articulos_alquilar")
+	@OneToMany(mappedBy="articulo")
     private ArrayList<Alquilar> lista_alquileres = new ArrayList<Alquilar>();
 
     /**
