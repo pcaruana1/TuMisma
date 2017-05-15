@@ -41,7 +41,7 @@ public class Metodos {
 			public void actionPerformed(ActionEvent e) {
 				dialog.crearPropietaria();
 				
-				Database db = new Database();
+				final Database db = new Database();
 				db.connection();
 
 				/**INSERTAR PROPIETARIA*/
@@ -203,8 +203,8 @@ public class Metodos {
 	//Mostrar datos propietaria
 	public static void mostrarPropietaria(Propietaria p)
 	{
-		int id = p.getId_propietaria();
-		InputPropietaria m = new InputPropietaria();
+		final int id = p.getId_propietaria();
+		final InputPropietaria m = new InputPropietaria();
 		
 		m.nombre.setText(p.getNombre_propietaria());
 		m.apellidos.setText(p.getApellidos_propietaria());

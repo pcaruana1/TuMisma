@@ -50,7 +50,7 @@ public class InputClienta extends JDialog {
 		lblNombre.setBounds(12, 23, 54, 24);
 		contentPanel.add(lblNombre);
 		
-		JTextArea nombre = new JTextArea();
+		final JTextArea nombre = new JTextArea();
 		nombre.setBounds(78, 24, 155, 22);
 		contentPanel.add(nombre);
 		
@@ -58,7 +58,7 @@ public class InputClienta extends JDialog {
 		lblApellidos.setBounds(12, 67, 79, 24);
 		contentPanel.add(lblApellidos);
 		
-		JTextArea apellidos = new JTextArea();
+		final JTextArea apellidos = new JTextArea();
 		apellidos.setBounds(78, 68, 255, 22);
 		contentPanel.add(apellidos);
 		
@@ -86,35 +86,35 @@ public class InputClienta extends JDialog {
 		lblFechaDeNacimiento.setBounds(12, 259, 137, 24);
 		contentPanel.add(lblFechaDeNacimiento);
 		
-		JTextArea dni = new JTextArea();
+		final JTextArea dni = new JTextArea();
 		dni.setBounds(78, 111, 128, 22);
 		contentPanel.add(dni);
 		
-		JTextArea direccion = new JTextArea();
+		final JTextArea direccion = new JTextArea();
 		direccion.setBounds(78, 149, 318, 22);
 		contentPanel.add(direccion);
 		
-		JTextArea cp = new JTextArea();
+		final JTextArea cp = new JTextArea();
 		cp.setBounds(108, 186, 98, 22);
 		contentPanel.add(cp);
 		
-		JTextArea telefono = new JTextArea();
+		final JTextArea telefono = new JTextArea();
 		telefono.setBounds(330, 24, 113, 22);
 		contentPanel.add(telefono);
 		
-		JTextArea email = new JTextArea();
+		final JTextArea email = new JTextArea();
 		email.setBounds(289, 111, 154, 22);
 		contentPanel.add(email);
 		
-		JDateChooser bday = new JDateChooser();
+		final JDateChooser bday = new JDateChooser();
 		bday.setBounds(152, 261, 105, 22);
 		contentPanel.add(bday);
 		
-		JLabel lblDescuento = new JLabel("Descuento (%):");
+		final JLabel lblDescuento = new JLabel("Descuento (%):");
 		lblDescuento.setBounds(12, 222, 113, 24);
 		contentPanel.add(lblDescuento);
 		
-		JTextArea descuento = new JTextArea();
+		final JTextArea descuento = new JTextArea();
 		descuento.setText("0");
 		descuento.setBounds(108, 224, 98, 22);
 		contentPanel.add(descuento);
